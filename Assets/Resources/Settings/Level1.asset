@@ -17,7 +17,8 @@ MonoBehaviour:
   Soil1Height: 12
   Soil2Height: 8
   Soil3Height: 5
-  CoreHeight: 1
+  CoreAHeight: 1
+  CoreBHeight: 1
   TerraformingFacilityInitialPosition: {x: 12, y: 4}
   MineralProbabilityByHeight:
     serializedVersion: 2
@@ -130,12 +131,12 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 3.2808914
+      outSlope: 3.2808914
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.027777791
       outWeight: 0
-    m_PreInfinity: 2
+    m_PreInfinity: 0
     m_PostInfinity: 2
     m_RotationOrder: 4

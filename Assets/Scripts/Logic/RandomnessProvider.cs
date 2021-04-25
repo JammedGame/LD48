@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using UnityRandom = UnityEngine.Random;
 
 public static class RandomnessProvider
 {
@@ -11,8 +12,8 @@ public static class RandomnessProvider
         return list.OrderBy(a => Guid.NewGuid()).ToList();
     }
 
-    public static double GetDouble()
+    public static float GetFloat()
     {
-        return random.NextDouble();
+        return UnityRandom.Range(0f, 1f);
     }
 }

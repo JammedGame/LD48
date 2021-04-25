@@ -36,19 +36,19 @@ public class LevelGenerator : ScriptableObject
 			Parent = this,
 		};
 
-		levelData.SoilVariants = GenerateSoilVariantsMatrix(levelData);
-		levelData.Tiles = GenerateTileTypeMatrix(levelData);
+		levelData.SoilVariants = GenerateSoilVariantsMatrix();
+		levelData.Tiles = GenerateTileTypeMatrix();
 		return levelData;
 	}
 
-	private TileData[,] GenerateTileTypeMatrix(LevelData levelData)
+	private TileData[,] GenerateTileTypeMatrix()
 	{
 		var tiles = new TileData[Width, Height];
 
 		// atmosphere
 		for (int j = 0; j < AtmosphereEndsAt; j++)
 		{
-			for (int i = 0; i < levelData.Width; i++)
+			for (int i = 0; i < Width; i++)
 			{
 				tiles[i, j] = GetDefaultTileForHeight(j);
 			}
@@ -57,40 +57,46 @@ public class LevelGenerator : ScriptableObject
 		// mineral, deposit, granite, magma, default
 		for (int j = AtmosphereEndsAt; j < Soil3EndsAt; j++)
 		{
-			var heightProgress = (float)(j - AtmosphereEndsAt) / (Soil3EndsAt - AtmosphereEndsAt);
+			var y = (float)(j - AtmosphereEndsAt) / (Soil3EndsAt - AtmosphereEndsAt);
 			var td = new List<TileData>();
-			var mineralCount = (int)(Width * MineralProbabilityByHeight.Evaluate(heightProgress));
+			var mineralCount = (int)(Width * MineralProbabilityByHeight.Evaluate(y));
 			td.AddRange(Enumerable.Repeat(GetMineralTileForHeight(j), mineralCount).ToList());
-			var depositCount = (int)(Width * DepositProbabilityByHeight.Evaluate(heightProgress));
+			var depositCount = (int)(Width * DepositProbabilityByHeight.Evaluate(y));
 			td.AddRange(Enumerable.Repeat(GetDepositTileForHeight(j), depositCount).ToList());
-			var graniteCount = (int)(Width * GraniteProbabilityByHeight.Evaluate(heightProgress));
+			var graniteCount = (int)(Width * GraniteProbabilityByHeight.Evaluate(y));
 			td.AddRange(Enumerable.Repeat(GetGraniteTileForHeight(j), graniteCount).ToList());
-			var magmaCount = (int)(Width * MagmaProbabilityByHeight.Evaluate(heightProgress));
+			var magmaCount = (int)(Width * MagmaProbabilityByHeight.Evaluate(y));
 			td.AddRange(Enumerable.Repeat(GetMagmaTileForHeight(j), magmaCount).ToList());
 			var defaultCount = Width - (mineralCount + depositCount + graniteCount + magmaCount);
 			td.AddRange(Enumerable.Repeat(GetDefaultTileForHeight(j), defaultCount).ToList());
 			td = RandomnessProvider.Shuffle(td);
-			for (int i = 0; i < levelData.Width; i++)
+			for (int i = 0; i < Width; i++)
 			{
 				tiles[i, j] = td[i];
 			}
 		}
 
-		// todo jole: better mineral
-		// for (int j = AtmosphereEndsAt; j < Soil3EndsAt; j++)
-		// {
-		// 	for (int i = 0; i < levelData.Width; i++)
-		// 	{
-		// 		if (tiles[i, j].TileType != TileType.Mineral) continue;
+		// better mineral
+		for (int j = AtmosphereEndsAt; j < Soil3EndsAt; j++)
+		{
+			for (int i = 0; i < Width; i++)
+			{
+				if (tiles[i, j].TileType != TileType.Mineral) continue;
 
-		// 		var widthProgress = 2.0 * (j - AtmosphereEndsAt) / Width;
-		// 	}
-		// }
+				if (tiles[i, j].Layer == Layer.C) continue;
+
+				var x = 2f * i / (Width - 2) - 1;
+				var betterMineralProbability = BetterMineralProbabilityByWidth.Evaluate(x);
+				if (RandomnessProvider.GetFloat() > betterMineralProbability) continue;
+
+				tiles[i, j].Layer++;
+			}
+		}
 
 		// core
 		for (int j = Soil3EndsAt; j < Height; j++)
 		{
-			for (int i = 0; i < levelData.Width; i++)
+			for (int i = 0; i < Width; i++)
 			{
 				tiles[i, j] = GetDefaultTileForHeight(j);
 			}
@@ -155,7 +161,7 @@ public class LevelGenerator : ScriptableObject
 		return new TileData(TileType.Magma, Layer.C);
 	}
 
-	private int[,] GenerateSoilVariantsMatrix(LevelData levelData)
+	private int[,] GenerateSoilVariantsMatrix()
 	{
 		var variants = new int[Width, Height];
 
@@ -167,8 +173,8 @@ public class LevelGenerator : ScriptableObject
 			3
 		};
 
-		for (int i = 0; i < levelData.Width; i++)
-			for (int j = 0; j < levelData.Height; j++)
+		for (int i = 0; i < Width; i++)
+			for (int j = 0; j < Height; j++)
 			{
 				for (int attempts = 0; attempts < 100; attempts++) //
 				{
