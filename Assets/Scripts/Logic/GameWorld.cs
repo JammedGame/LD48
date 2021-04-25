@@ -91,6 +91,8 @@ public class GameWorld
 			return false;
 		if (tile.TileType == TileType.Mineral && action.Facility != FacilityType.MineralExtractor)
 			return false;
+		if (tile.HasFacility)
+			return false;
 
 		// todo: validate price agains wallet
 		// todo: validate tech tree
