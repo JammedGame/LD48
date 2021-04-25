@@ -11,12 +11,14 @@ public class LevelGenerator : ScriptableObject
 	public int Soil1Height = 12;
 	public int Soil2Height = 8;
 	public int Soil3Height = 5;
-	public int CoreHeight = 5;
+	public int CoreAHeight = 1;
+	public int CoreBHeight = 1;
 	public int AtmosphereEndsAt => AtmosphereHeight;
 	public int Soil1EndsAt => AtmosphereHeight + Soil1Height;
 	public int Soil2EndsAt => AtmosphereHeight + Soil1Height + Soil2Height;
 	public int Soil3EndsAt => AtmosphereHeight + Soil1Height + Soil2Height + Soil3Height;
-	public int Height => AtmosphereHeight + Soil1Height + Soil2Height + Soil3Height + CoreHeight;
+	public int CoreAEndsAt => AtmosphereHeight + Soil1Height + Soil2Height + Soil3Height + CoreAHeight;
+	public int Height => AtmosphereHeight + Soil1Height + Soil2Height + Soil3Height + CoreAHeight + CoreBHeight;
 	public Vector2Int TerraformingFacilityInitialPosition;
 	public AnimationCurve MineralProbabilityByHeight;
 	public AnimationCurve DepositProbabilityByHeight;
@@ -42,6 +44,15 @@ public class LevelGenerator : ScriptableObject
 	private TileData[,] GenerateTileTypeMatrix(LevelData levelData)
 	{
 		var tiles = new TileData[Width, Height];
+
+		// atmosphere
+		for (int j = 0; j < AtmosphereEndsAt; j++)
+		{
+			for (int i = 0; i < levelData.Width; i++)
+			{
+				tiles[i, j] = GetDefaultTileForHeight(j);
+			}
+		}
 
 		// mineral, deposit, granite, magma, default
 		for (int j = AtmosphereEndsAt; j < Soil3EndsAt; j++)
@@ -76,6 +87,15 @@ public class LevelGenerator : ScriptableObject
 		// 	}
 		// }
 
+		// core
+		for (int j = Soil3EndsAt; j < Height; j++)
+		{
+			for (int i = 0; i < levelData.Width; i++)
+			{
+				tiles[i, j] = GetDefaultTileForHeight(j);
+			}
+		}
+
 		return tiles;
 	}
 
@@ -87,8 +107,12 @@ public class LevelGenerator : ScriptableObject
 			return new TileData(TileType.Soil, Layer.A);
 		if (j < Soil2EndsAt)
 			return new TileData(TileType.Soil, Layer.B);
+		if (j < Soil3EndsAt)
+			return new TileData(TileType.Soil, Layer.C);
+		if (j < CoreAEndsAt)
+			return new TileData(TileType.Core, Layer.A);
 
-		return new TileData(TileType.Soil, Layer.C);
+		return new TileData(TileType.Core, Layer.B);
 	}
 
 	private TileData GetMineralTileForHeight(int j)

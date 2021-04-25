@@ -8,7 +8,6 @@ public enum Layer
 	A = 2,
 	B = 3,
 	C = 4,
-	Core = 5
 }
 
 public enum TileType
