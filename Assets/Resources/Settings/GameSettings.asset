@@ -38,7 +38,7 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 1
     Name: Atmosphere
@@ -65,10 +65,10 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 2
-    Name: Soil1
+    Name: Soil
     IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
@@ -92,10 +92,10 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 3
-    Name: Soil2
+    Name: Mineral
     IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
@@ -119,10 +119,10 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 4
-    Name: Soil3
+    Name: Deposit
     IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
@@ -146,90 +146,9 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 5
-    Name: Mineral1
-    IsFacility: 0
-    FacilitySettings:
-      ConstructionTime: 0
-      MineralPrice:
-        FlatPrice: 0
-        DependsOnSoil: 0
-        Soil1Price: 0
-        Soil2Price: 0
-        Soil3Price: 0
-      EnergyContribution:
-        FlatContribution: 0
-        DependsOnAdjacentMagma: 0
-        PerAdjacentMagmaContribution: 0
-      Production:
-        MineralProduction:
-          FlatProduction: 0
-          DependsOnSoil: 0
-          Soil1Production: 0
-          Soil2Production: 0
-          Soil3Production: 0
-        AdjacentFacilitiesBoost: 0
-        ConstructionTimeReductionGlobal: 0
-      Requirements:
-        GlobalFacilityRequirement: 
-        AdjacentTileRequirements: 
-  - TileType: 6
-    Name: Mineral2
-    IsFacility: 0
-    FacilitySettings:
-      ConstructionTime: 0
-      MineralPrice:
-        FlatPrice: 0
-        DependsOnSoil: 0
-        Soil1Price: 0
-        Soil2Price: 0
-        Soil3Price: 0
-      EnergyContribution:
-        FlatContribution: 0
-        DependsOnAdjacentMagma: 0
-        PerAdjacentMagmaContribution: 0
-      Production:
-        MineralProduction:
-          FlatProduction: 0
-          DependsOnSoil: 0
-          Soil1Production: 0
-          Soil2Production: 0
-          Soil3Production: 0
-        AdjacentFacilitiesBoost: 0
-        ConstructionTimeReductionGlobal: 0
-      Requirements:
-        GlobalFacilityRequirement: 
-        AdjacentTileRequirements: 
-  - TileType: 7
-    Name: Mineral3
-    IsFacility: 0
-    FacilitySettings:
-      ConstructionTime: 0
-      MineralPrice:
-        FlatPrice: 0
-        DependsOnSoil: 0
-        Soil1Price: 0
-        Soil2Price: 0
-        Soil3Price: 0
-      EnergyContribution:
-        FlatContribution: 0
-        DependsOnAdjacentMagma: 0
-        PerAdjacentMagmaContribution: 0
-      Production:
-        MineralProduction:
-          FlatProduction: 0
-          DependsOnSoil: 0
-          Soil1Production: 0
-          Soil2Production: 0
-          Soil3Production: 0
-        AdjacentFacilitiesBoost: 0
-        ConstructionTimeReductionGlobal: 0
-      Requirements:
-        GlobalFacilityRequirement: 
-        AdjacentTileRequirements: 
-  - TileType: 8
     Name: Granite
     IsFacility: 0
     FacilitySettings:
@@ -254,9 +173,9 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
-  - TileType: 9
+  - TileType: 6
     Name: Magma
     IsFacility: 0
     FacilitySettings:
@@ -281,9 +200,9 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
-  - TileType: 10
+  - TileType: 7
     Name: Core
     IsFacility: 0
     FacilitySettings:
@@ -308,34 +227,7 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
-        AdjacentTileRequirements: 
-  - TileType: 11
-    Name: DepositPerk
-    IsFacility: 0
-    FacilitySettings:
-      ConstructionTime: 0
-      MineralPrice:
-        FlatPrice: 0
-        DependsOnSoil: 0
-        Soil1Price: 0
-        Soil2Price: 0
-        Soil3Price: 0
-      EnergyContribution:
-        FlatContribution: 0
-        DependsOnAdjacentMagma: 0
-        PerAdjacentMagmaContribution: 0
-      Production:
-        MineralProduction:
-          FlatProduction: 0
-          DependsOnSoil: 0
-          Soil1Production: 0
-          Soil2Production: 0
-          Soil3Production: 0
-        AdjacentFacilitiesBoost: 0
-        ConstructionTimeReductionGlobal: 0
-      Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 101
     Name: TerraformingFacility
@@ -362,7 +254,7 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 102
     Name: Tunnel
@@ -389,7 +281,7 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 103
     Name: MineralExtractor
@@ -416,7 +308,7 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 104
     Name: PowerPlant
@@ -443,7 +335,7 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 105
     Name: Battery
@@ -470,7 +362,7 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 106
     Name: GeothermalPlant
@@ -497,7 +389,7 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 107
     Name: Booster
@@ -524,7 +416,7 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 108
     Name: NuclearPlant
@@ -551,7 +443,7 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 109
     Name: BuildBotFacility
@@ -578,7 +470,7 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   - TileType: 110
     Name: BFCoreExtractor
@@ -605,7 +497,7 @@ MonoBehaviour:
         AdjacentFacilitiesBoost: 0
         ConstructionTimeReductionGlobal: 0
       Requirements:
-        GlobalFacilityRequirement: 
+        GlobalFacilityRequirements: 
         AdjacentTileRequirements: 
   AllLevels:
   - {fileID: 11400000, guid: 26e8429655303f64b8c065ebcaa0866b, type: 2}

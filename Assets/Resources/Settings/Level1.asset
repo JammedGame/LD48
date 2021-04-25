@@ -18,7 +18,7 @@ MonoBehaviour:
   Soil2Height: 8
   Soil3Height: 5
   CoreHeight: 5
-  TerraformingFacilityInitialPosition: {x: 0, y: 0}
+  TerraformingFacilityInitialPosition: {x: 12, y: 4}
   MineralProbabilityByHeight:
     serializedVersion: 2
     m_Curve:

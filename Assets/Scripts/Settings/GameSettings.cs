@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameSettings : ScriptableObject
 {
     public List<TileTypeSettings> SettingsPerType;
-    public List<LevelData> AllLevels;
+    public List<LevelGenerator> AllLevels;
 
     public TileTypeSettings GetSettings(TileType tileType)
     {
