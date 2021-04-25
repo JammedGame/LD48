@@ -7,11 +7,13 @@ public class Tile
 	public readonly GameWorld World;
 	public readonly int X, Y;
 	public readonly int SoilVariant;
+	public readonly Layer Layer;
 
-	public Tile(GameWorld world, int x, int y, TileType type, int soilVariant)
+	public Tile(GameWorld world, int x, int y, TileData tileData, int soilVariant)
 	{
 		this.World = world;
-		TileType = type;
+		TileType = tileData.TileType;
+		Layer = tileData.Layer;
 		SoilVariant = soilVariant;
 		X = x;
 		Y = y;

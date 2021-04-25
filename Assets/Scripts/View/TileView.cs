@@ -30,15 +30,29 @@ public class TileView : MonoBehaviour
 		meshRenderer.enabled = true;
 	}
 
+	const string TileType_Format = "Tiles/{0}";
+	const string TileType_Layer_Format = "Tiles/{0}_{1}";
+	const string TileType_Layer_Variant_Format = "Tiles/{0}_{1}_{2}";
+
 	public static Texture GetTextureForTile(Tile tile)
 	{
-		switch(tile.TileType)
+		if (tile.TileType == TileType.Atmosphere)
 		{
-			case TileType soil when soil.IsSoil():
-				return tile.TileType.LoadSoilTexture(tile.SoilVariant);
-
-			default:
-				return tile.TileType.LoadTexture();
+			var path0 = string.Format(TileType_Format, tile.TileType);
+			return Resources.Load<Texture>(path0);
 		}
+
+		var path1 = string.Format(TileType_Layer_Variant_Format, tile.TileType, tile.Layer, tile.SoilVariant);
+		Texture result = Resources.Load<Texture>(path1);
+		if (result)
+			return result;
+
+		var path2 = string.Format(TileType_Layer_Format, tile.TileType, tile.Layer);
+		Texture result2 = Resources.Load<Texture>(path1);
+		if (result2)
+			return result2;
+
+		Debug.LogError($"Failed to find texture found for tile: {tile}");
+		return null;
 	}
 }

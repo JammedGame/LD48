@@ -31,9 +31,9 @@ public class LevelGenerator : ScriptableObject
 	}
 
 	// todo dummy
-	private TileType[,] GenerateTileTypeMatrix(LevelData levelData)
+	private TileData[,] GenerateTileTypeMatrix(LevelData levelData)
 	{
-		var tiles = new TileType[Width, Height];
+		var tiles = new TileData[Width, Height];
 		for (int i = 0; i < levelData.Width; i++)
 			for (int j = 0; j < levelData.Height; j++)
 			{
@@ -43,16 +43,16 @@ public class LevelGenerator : ScriptableObject
 		return tiles;
 	}
 
-	private TileType GetDefaultTileForHeight(int j)
+	private TileData GetDefaultTileForHeight(int j)
 	{
 		if (j < AtmosphereEndsAt)
-			return TileType.Atmosphere;
+			return new TileData(TileType.Atmosphere, Layer.Undefined);
 		if (j < Soil1EndsAt)
-			return TileType.Soil_A;
+			return new TileData(TileType.Soil, Layer.A);
 		if (j < Soil2EndsAt)
-			return TileType.Soil_B;
+			return new TileData(TileType.Soil, Layer.B);
 
-		return TileType.Soil_C;
+		return new TileData(TileType.Soil, Layer.C);
 	}
 
 	private int[,] GenerateSoilVariantsMatrix(LevelData levelData)

@@ -30,20 +30,18 @@ public class MineralPrice
 	public int Soil2Price;
 	public int Soil3Price;
 
-	public int GetPrice(TileType soil)
+	public int GetPrice(Layer layer)
 	{
-		if (!DependsOnSoil) return FlatPrice;
+		if (!DependsOnSoil)
+			return FlatPrice;
 
-		switch (soil)
+		switch (layer)
 		{
-			case TileType.Soil_A:
-			case TileType.Deposit_A:
+			case Layer.A:
 				return FlatPrice + Soil1Price;
-			case TileType.Soil_B:
-			case TileType.Deposit_B:
+			case Layer.B:
 				return FlatPrice + Soil2Price;
-			case TileType.Soil_C:
-			case TileType.Deposit_C:
+			case Layer.C:
 				return FlatPrice + Soil3Price;
 			default:
 				throw new ArgumentOutOfRangeException();
@@ -83,20 +81,18 @@ public class MineralProduction
 	public int Soil2Production;
 	public int Soil3Production;
 
-	public int GetProduction(TileType soil)
+	public int GetProduction(Layer layer)
 	{
-		if (!DependsOnSoil) return FlatProduction;
+		if (!DependsOnSoil)
+			return FlatProduction;
 
-		switch (soil)
+		switch (layer)
 		{
-			case TileType.Soil_A:
-			case TileType.Deposit_A:
+			case Layer.A:
 				return FlatProduction + Soil1Production;
-			case TileType.Soil_B:
-			case TileType.Deposit_B:
+			case Layer.B:
 				return FlatProduction + Soil2Production;
-			case TileType.Soil_C:
-			case TileType.Deposit_C:
+			case Layer.C:
 				return FlatProduction + Soil3Production;
 			default:
 				throw new ArgumentOutOfRangeException();

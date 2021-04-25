@@ -10,7 +10,7 @@ public class LevelData
 {
 	public int Width;
 	public int Height;
-	public TileType[,] Tiles;
+	public TileData[,] Tiles;
 	public int[,] SoilVariants;
 	public Vector2Int TerraformerTile;
 	public LevelGenerator Parent;
