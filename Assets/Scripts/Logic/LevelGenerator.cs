@@ -24,28 +24,31 @@ public class LevelGenerator : ScriptableObject
 
 	public LevelData Generate()
 	{
-		var tiles = new TileType[Width, Height];
-
 		var levelData = new LevelData()
 		{
 			Height = Height,
 			Width = Width,
-			Tiles = tiles,
-			TerraformerTile = TerraformingFacilityInitialPosition,
 			Parent = this
 		};
 
 		// do variants
 		levelData.SoilVariants = GenerateSoilVariantsMatrix(levelData);
+		levelData.Tiles = GenerateTileTypeMatrix(levelData);
 
-		// todo dummy
+		return levelData;
+	}
+
+	// todo dummy
+	private TileType[,] GenerateTileTypeMatrix(LevelData levelData)
+	{
+		var tiles = new TileType[Width, Height];
 		for (int i = 0; i < levelData.Width; i++)
 			for (int j = 0; j < levelData.Height; j++)
 			{
 				tiles[i, j] = TileType.Soil_A;
 			}
 
-		return levelData;
+		return tiles;
 	}
 
 	private int[,] GenerateSoilVariantsMatrix(LevelData levelData)

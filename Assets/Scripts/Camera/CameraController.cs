@@ -13,20 +13,29 @@ public class CameraController : MonoBehaviour
 	private Vector3 lastMousePos;
 	private Vector3 posDelta;
 	private float targetZoom;
-	private Vector2 panLimit;
+
+	// edges
+	private float rightEdge;
+	private float leftEdge;
+	private float topEdge;
+	private float bottomEdge;
 
 	public void Initialize(LevelData levelData)
 	{
-		panLimit = new Vector2(levelData.Width, levelData.Height);
 		transform.position = levelData.TerraformerTile.TileCoordToPosition3D();
 		targetZoom = Camera.orthographicSize;
+
+		this.leftEdge = 0;
+		this.rightEdge = levelData.Width;
+		this.topEdge = 0;
+		this.bottomEdge = -levelData.Height;
 	}
 
 	public void CameraUpdate()
 	{
+		Zoom();
 		Movement();
 		Drag();
-		Zoom();
 	}
 
 	private void Movement()
@@ -122,7 +131,35 @@ public class CameraController : MonoBehaviour
 
 	private void ClampXY(ref Vector3 pos)
 	{
-		pos.y = Mathf.Clamp(pos.y, -panLimit.y + 0.5f, 0.5f);
-		pos.x = Mathf.Clamp(pos.x, 0 - 0.5f, panLimit.x - 0.5f);
+		var cameraSizeVertical = Camera.orthographicSize;
+		var cameraSizeHorizontal = cameraSizeVertical * (Screen.width / (float)Screen.height);
+
+		if (rightEdge - leftEdge > cameraSizeHorizontal * 2)
+		{
+			pos.x = Mathf.Clamp
+			(
+				pos.x,
+				this.leftEdge + cameraSizeHorizontal,
+				this.rightEdge - cameraSizeHorizontal
+			);
+		}
+		else
+		{
+			pos.x = (rightEdge + leftEdge) / 2f;
+		}
+
+		if (topEdge - bottomEdge > cameraSizeVertical * 2)
+		{
+			pos.y = Mathf.Clamp
+			(
+				pos.y,
+				this.bottomEdge + cameraSizeVertical,
+				this.topEdge - cameraSizeVertical
+			);
+		}
+		else
+		{
+			pos.y = (bottomEdge + topEdge) / 2f;
+		}
 	}
 }
