@@ -7,24 +7,22 @@ public class CameraController : MonoBehaviour
 	public float PanSpeed = 20f;
 	public float ZoomMin = 5;
 	public float ZoomMax = 10;
-	public float ZoomSpeed = 2f;
 
 	// runtime
 	private Vector3 lastMousePos;
 	private Vector3 posDelta;
-	private float targetZoom;
 
 	// edges
 	private float rightEdge;
 	private float leftEdge;
 	private float topEdge;
 	private float bottomEdge;
+	private float topToBottom => topEdge - bottomEdge;
+	private float rightToLeft => rightEdge - leftEdge;
 
 	public void Initialize(LevelData levelData)
 	{
 		transform.position = levelData.TerraformerTile.TileCoordToPosition3D();
-		targetZoom = Camera.orthographicSize;
-
 		this.leftEdge = 0;
 		this.rightEdge = levelData.Width;
 		this.topEdge = 0;
@@ -83,15 +81,23 @@ public class CameraController : MonoBehaviour
 	private void Zoom()
 	{
 		// When we scroll our mouse wheel up, zoom in if the camera is not within the minimum distance (set by our zoomMin variable)
+		var currentZoom = Camera.orthographicSize;
 		var scroll = Input.GetAxis("Mouse ScrollWheel");
-		if (scroll != 0.0f)
-		{
-			targetZoom -= scroll * ZoomSpeed;
-		}
+		currentZoom -= scroll * Time.deltaTime;
 
-		// smoooooooth scroll like jazz
-		targetZoom = Mathf.Clamp(targetZoom, ZoomMin, ZoomMax);
-		Camera.orthographicSize = Mathf.Lerp(Camera.orthographicSize, targetZoom, 0.2f);
+		if (currentZoom < ZoomMin) currentZoom = ZoomMin;
+		if (currentZoom > ZoomMax) currentZoom = ZoomMax;
+
+		// clamp to screen bounds
+		var aspectRatio = Screen.width / (float)Screen.height;
+
+		var cameraSizeVertical = currentZoom * 2;
+		var cameraSizeHorizontal = currentZoom * aspectRatio * 2;
+
+		if (cameraSizeVertical > topToBottom) { currentZoom = topToBottom / 2; }
+		if (cameraSizeHorizontal > rightToLeft) { currentZoom = rightToLeft / aspectRatio / 2; }
+
+		Camera.orthographicSize = currentZoom;
 	}
 
 	private void Drag()
