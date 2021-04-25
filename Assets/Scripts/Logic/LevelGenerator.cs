@@ -52,7 +52,13 @@ public class LevelGenerator : ScriptableObject
 	{
 		var variants = new int[Width, Height];
 
-		var variantPool = new int[] { 0, 0, 1, 1, 2, 2, 3 };
+		var variantPool = new int[]
+		{
+			0, 0, 0, 0,
+			1, 1, 1, 1,
+			2, 2, 2, 2,
+			3
+		};
 
 		for (int i = 0; i < levelData.Width; i++)
 			for (int j = 0; j < levelData.Height; j++)
