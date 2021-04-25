@@ -7,7 +7,8 @@ public enum Layer
 	Atmosphere = 1,
 	A = 2,
 	B = 3,
-	C = 4
+	C = 4,
+	Core = 5
 }
 
 public enum TileType
