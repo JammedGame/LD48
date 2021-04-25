@@ -97,7 +97,8 @@ public class GameWorld
 		if (tile.HasFacility)
 			return false;
 
-		// todo: validate price agains wallet
+		// todo: check if adjecent to tunnel
+		// todo: validate price against wallet
 		// todo: validate tech tree
 		// todo: validate special tile conditions
 
