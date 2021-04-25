@@ -36,21 +36,34 @@ public class TileView : MonoBehaviour
 
 	public static Texture GetTextureForTile(Tile tile)
 	{
-		if (tile.TileType == TileType.Atmosphere)
+		Texture result = null;
+
+		// check transition
+		var bottomTile = tile.GetAdjecentTile(Direction.Bottom);
+		if (bottomTile != null && bottomTile.Layer != tile.Layer)
 		{
-			var path0 = string.Format(TileType_Format, tile.TileType);
-			return Resources.Load<Texture>(path0);
+			result = Resources.Load<Texture>($"Tiles/{tile.TileType}_{tile.Layer}{bottomTile.Layer}_{tile.SoilVariant}");
+			if (result)
+				return result;
+
+			result = Resources.Load<Texture>($"Tiles/{tile.TileType}_{tile.Layer}{bottomTile.Layer}");
+			if (result)
+				return result;
 		}
 
-		var path1 = string.Format(TileType_Layer_Variant_Format, tile.TileType, tile.Layer, tile.SoilVariant);
-		Texture result = Resources.Load<Texture>(path1);
+		// check layer and variant
+		result = Resources.Load<Texture>($"Tiles/{tile.TileType}_{tile.Layer}_{tile.SoilVariant}");
 		if (result)
 			return result;
 
-		var path2 = string.Format(TileType_Layer_Format, tile.TileType, tile.Layer);
-		Texture result2 = Resources.Load<Texture>(path1);
-		if (result2)
-			return result2;
+		// check layer only
+		result = Resources.Load<Texture>($"Tiles/{tile.TileType}_{tile.Layer}");
+		if (result)
+			return result;
+
+		result = Resources.Load<Texture>($"Tiles/{tile.TileType}");
+		if (result)
+			return result;
 
 		Debug.LogError($"Failed to find texture found for tile: {tile}");
 		return null;
