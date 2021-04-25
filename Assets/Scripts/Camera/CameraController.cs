@@ -7,7 +7,9 @@ public class CameraController : BaseRaycaster,
 {
 	// Serialized
 	public GameUIController UIController;
+	public GameController GameController;
 	public Camera Camera;
+	public int FogOfWarThreshold = 6;
 	public float PanSpeed = 20f;
 	public float ZoomMin = 5;
 	public float ZoomMax = 10;
@@ -136,20 +138,27 @@ public class CameraController : BaseRaycaster,
 			pos.x = (rightEdge + leftEdge) / 2f;
 		}
 
-		if (topEdge - bottomEdge > cameraSizeVertical * 2)
+		// bottom clamp = special "fog of war condition"
+		var fogOfWarLimit = GameController.ActiveGame.ReachedDepth + FogOfWarThreshold;
+		var bottomClamp = Mathf.Max(this.bottomEdge, -fogOfWarLimit);
+
+		if (topEdge - bottomClamp > cameraSizeVertical * 2)
 		{
 			pos.y = Mathf.Clamp
 			(
 				pos.y,
-				this.bottomEdge + cameraSizeVertical,
+				bottomClamp + cameraSizeVertical,
 				this.topEdge - cameraSizeVertical
 			);
 		}
 		else
 		{
-			pos.y = (bottomEdge + topEdge) / 2f;
+			pos.y = (bottomClamp + topEdge) / 2f;
 		}
 	}
+
+	// Unity UI interaction
+	// ---------------------------
 
 	public override void Raycast(PointerEventData eventData, List<RaycastResult> resultAppendList)
 	{
@@ -196,4 +205,6 @@ public class CameraController : BaseRaycaster,
 	{
 		UIController.SelectedAction?.OnPointerDown(eventData);
 	}
+
+	// ---------------------------
 }

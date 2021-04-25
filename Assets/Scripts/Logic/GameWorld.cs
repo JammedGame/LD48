@@ -11,6 +11,7 @@ public class GameWorld
 	public int Minerals { get; private set; }
 	public int Energy { get; private set; }
 	public int EnergyCap { get; private set; }
+	public int ReachedDepth { get; private set; }
 
 	public event Action<PlayerAction> OnTurnOver;
 
@@ -34,6 +35,7 @@ public class GameWorld
 		Minerals = settings.InitialMinerals;
 		Energy = settings.InitialEnergy;
 		EnergyCap = settings.InitialEnergyCap;
+		ReachedDepth = levelData.Parent.AtmosphereEndsAt;
 	}
 
 	public Tile GetTile(int x, int y)
@@ -71,6 +73,7 @@ public class GameWorld
 
 		// change tileboard
 		tiles[action.X, action.Y].SetTile(action.Facility);
+		ReachedDepth = Mathf.Max(action.Y, ReachedDepth);
 
 		ProcessTurn();
 		OnTurnOver?.Invoke(action);

@@ -276,7 +276,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIController: {fileID: 1323026340}
+  GameController: {fileID: 275359212}
   Camera: {fileID: 1968993906}
+  FogOfWarThreshold: 6
   PanSpeed: 15
   ZoomMin: 3
   ZoomMax: 10
