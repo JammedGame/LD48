@@ -31,7 +31,7 @@ public class PlacerButton : GameUIComponent,
 
     public void PlaceFacility()
     {
-		var tileCoord = GetHoveredTile();
+		var tileCoord = BoardUtil.GetHoveredTile();
 		var action = new PlayerAction()
 		{
 			Facility = Facility,
@@ -59,20 +59,4 @@ public class GameUIComponent : UIBehaviour
     public virtual void OnDeselect()
     {
     }
-
-    public Vector2Int GetHoveredTile()
-    {
-		var camera = Camera.main;
-		var ray = camera.ScreenPointToRay(Input.mousePosition);
-		var plane = new Plane(Vector3.back, Vector3.zero);
-        if (plane.Raycast(ray, out float dist))
-        {
-			var point3D = ray.GetPoint(dist);
-			return BoardUtil.Position3DToTileCoord(point3D);
-		}
-        else
-        {
-		    return new Vector2Int(99999, 99999);
-        }
-	}
 }
