@@ -121,24 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &48255516 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5924962438987737004, guid: 0b7b6f468d6508a449d8e54146c91a40,
-    type: 3}
-  m_PrefabInstance: {fileID: 6217977140422747371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &48255521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48255516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &275359211
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,168 +166,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &338354836 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8058654300525987052, guid: 0b7b6f468d6508a449d8e54146c91a40,
-    type: 3}
-  m_PrefabInstance: {fileID: 6217977140422747371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &338354841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338354836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &420761736 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2557247090396892820, guid: 0b7b6f468d6508a449d8e54146c91a40,
-    type: 3}
-  m_PrefabInstance: {fileID: 6217977140422747371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &420761741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420761736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &424076537 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8983113809508123368, guid: 0b7b6f468d6508a449d8e54146c91a40,
-    type: 3}
-  m_PrefabInstance: {fileID: 6217977140422747371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &424076542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 424076537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &481309308 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6428220798546862450, guid: 0b7b6f468d6508a449d8e54146c91a40,
-    type: 3}
-  m_PrefabInstance: {fileID: 6217977140422747371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &481309313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481309308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &677938704 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5844394150890727496, guid: 0b7b6f468d6508a449d8e54146c91a40,
-    type: 3}
-  m_PrefabInstance: {fileID: 6217977140422747371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &677938709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677938704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &682889144 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1156487119419833356, guid: 0b7b6f468d6508a449d8e54146c91a40,
-    type: 3}
-  m_PrefabInstance: {fileID: 6217977140422747371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &682889149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682889144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1059730636 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1370830494950864858, guid: 0b7b6f468d6508a449d8e54146c91a40,
-    type: 3}
-  m_PrefabInstance: {fileID: 6217977140422747371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1059730641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059730636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1323026339 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6217977139455484744, guid: 0b7b6f468d6508a449d8e54146c91a40,
-    type: 3}
-  m_PrefabInstance: {fileID: 6217977140422747371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1323026340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323026339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f36fc522b81c34da7192835ee1d0d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1338601657 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5063778135796485198, guid: 0b7b6f468d6508a449d8e54146c91a40,
-    type: 3}
-  m_PrefabInstance: {fileID: 6217977140422747371}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1338601662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338601657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1744317096
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,18 +360,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 800518553654883394, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Text
-      value: 'BuildBot
-
-        Facility'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1156487119419833356, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Name
-      value: Power Plant
-      objectReference: {fileID: 0}
     - target: {fileID: 1156587152107298947, guid: 0b7b6f468d6508a449d8e54146c91a40,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -581,11 +389,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370830494950864858, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Name
-      value: Tunnel
       objectReference: {fileID: 0}
     - target: {fileID: 1410833977452014249, guid: 0b7b6f468d6508a449d8e54146c91a40,
         type: 3}
@@ -617,16 +420,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1558644471935310632, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Text
-      value: BFCore Extractor
-      objectReference: {fileID: 0}
-    - target: {fileID: 1577863042255008743, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Text
-      value: Extractor
-      objectReference: {fileID: 0}
     - target: {fileID: 1792717812193626555, guid: 0b7b6f468d6508a449d8e54146c91a40,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -656,16 +449,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2006338825938322394, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Text
-      value: Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 2557247090396892820, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Name
-      value: Nuclear
       objectReference: {fileID: 0}
     - target: {fileID: 2817839695640324949, guid: 0b7b6f468d6508a449d8e54146c91a40,
         type: 3}
@@ -726,41 +509,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3291019727296933542, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Text
-      value: Booster
-      objectReference: {fileID: 0}
-    - target: {fileID: 3308473906103160166, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Text
-      value: Tunnel
-      objectReference: {fileID: 0}
-    - target: {fileID: 4688578794282472582, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Text
-      value: Geothermal
-      objectReference: {fileID: 0}
-    - target: {fileID: 5063778135796485198, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Name
-      value: Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 5237960908953999129, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Text
-      value: Nuclear
-      objectReference: {fileID: 0}
-    - target: {fileID: 5844394150890727496, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Name
-      value: BFCoreExtractor
-      objectReference: {fileID: 0}
-    - target: {fileID: 5924962438987737004, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Name
-      value: Extractor
       objectReference: {fileID: 0}
     - target: {fileID: 6148335654416942418, guid: 0b7b6f468d6508a449d8e54146c91a40,
         type: 3}
@@ -902,16 +650,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6428220798546862450, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Name
-      value: Building Bot
-      objectReference: {fileID: 0}
-    - target: {fileID: 7074165302870989852, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Text
-      value: Power plant
-      objectReference: {fileID: 0}
     - target: {fileID: 7278429564064791403, guid: 0b7b6f468d6508a449d8e54146c91a40,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -971,21 +709,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8058654300525987052, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Name
-      value: Booster
-      objectReference: {fileID: 0}
-    - target: {fileID: 8393678589736780097, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8983113809508123368, guid: 0b7b6f468d6508a449d8e54146c91a40,
-        type: 3}
-      propertyPath: m_Name
-      value: Geothermal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b7b6f468d6508a449d8e54146c91a40, type: 3}

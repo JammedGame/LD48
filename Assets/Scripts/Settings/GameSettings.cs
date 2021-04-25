@@ -4,6 +4,12 @@ using UnityEngine;
 [CreateAssetMenu]
 public class GameSettings : ScriptableObject
 {
+	[Header("Wallet")]
+	public int InitialMinerals;
+	public int InitialEnergy;
+	public int InitialEnergyCap;
+
+	[Header("Tile Settings")]
     public List<TileTypeSettings> SettingsPerType;
     public List<LevelGenerator> AllLevels;
 
