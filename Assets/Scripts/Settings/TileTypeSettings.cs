@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Linq;
 
 [Serializable]
 public class TileTypeSettings
@@ -31,8 +32,22 @@ public class MineralPrice
 
 	public int GetPrice(TileType soil)
 	{
-		// todo jole
-		return 0;
+		if (!DependsOnSoil) return FlatPrice;
+
+		switch (soil)
+		{
+			case TileType.Soil_A:
+			case TileType.Deposit_A:
+				return FlatPrice + Soil1Price;
+			case TileType.Soil_B:
+			case TileType.Deposit_B:
+				return FlatPrice + Soil2Price;
+			case TileType.Soil_C:
+			case TileType.Deposit_C:
+				return FlatPrice + Soil3Price;
+			default:
+				throw new ArgumentOutOfRangeException();
+		}
 	}
 }
 
@@ -43,10 +58,11 @@ public class EnergyContribution
 	public bool DependsOnAdjacentMagma;
 	public int PerAdjacentMagmaContribution;
 
-	public int GetProduction(TileType[] adjacentTiles)
+	public int GetContribution(TileType[] adjacentTiles)
 	{
-		// todo jole
-		return 0;
+		if (!DependsOnAdjacentMagma) return FlatContribution;
+
+		return FlatContribution + Array.FindAll(adjacentTiles, t => t == TileType.Magma).Length * PerAdjacentMagmaContribution;
 	}
 }
 
@@ -69,21 +85,36 @@ public class MineralProduction
 
 	public int GetProduction(TileType soil)
 	{
-		// todo jole
-		return 0;
+		if (!DependsOnSoil) return FlatProduction;
+
+		switch (soil)
+		{
+			case TileType.Soil_A:
+			case TileType.Deposit_A:
+				return FlatProduction + Soil1Production;
+			case TileType.Soil_B:
+			case TileType.Deposit_B:
+				return FlatProduction + Soil2Production;
+			case TileType.Soil_C:
+			case TileType.Deposit_C:
+				return FlatProduction + Soil3Production;
+			default:
+				throw new ArgumentOutOfRangeException();
+		}
 	}
 }
 
 [Serializable]
 public class Requirements
 {
-	public TileType[] GlobalFacilityRequirement;
+	public TileType[] GlobalFacilityRequirements;
 	public TileType[] AdjacentTileRequirements;
 
 	public bool AreMet(TileType[] allFacilities, TileType[] adjacentTiles)
 	{
-		// todo jole
-		return false;
+		var globalMet = GlobalFacilityRequirements.Except(allFacilities).Count() == 0;
+		var adjacentMet = AdjacentTileRequirements.Except(adjacentTiles).Count() == 0;
+		return globalMet && adjacentMet;
 	}
 }
 
