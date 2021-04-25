@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c70125615547f48a9ced01ae4e134d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIController: {fileID: 1323026340}
   Camera: {fileID: 1968993906}
   PanSpeed: 15
   ZoomMin: 3

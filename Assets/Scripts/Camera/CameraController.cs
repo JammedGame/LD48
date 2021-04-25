@@ -3,9 +3,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CameraController : BaseRaycaster,
-	IBeginDragHandler, IDragHandler, IEndDragHandler
+	IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
 {
 	// Serialized
+	public GameUIController UIController;
 	public Camera Camera;
 	public float PanSpeed = 20f;
 	public float ZoomMin = 5;
@@ -189,5 +190,10 @@ public class CameraController : BaseRaycaster,
 	public void OnEndDrag(PointerEventData eventData)
 	{
 		isDragging = false;
+	}
+
+	public void OnPointerDown(PointerEventData eventData)
+	{
+		UIController.SelectedAction?.OnPointerDown(eventData);
 	}
 }

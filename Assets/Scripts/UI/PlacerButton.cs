@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -45,6 +46,11 @@ public class PlacerButton : GameUIComponent,
 	{
 		UIController.SelectAction(this);
 	}
+
+	public override void OnPointerDown(PointerEventData eventData)
+    {
+		PlaceFacility();
+	}
 }
 
 public class GameUIComponent : UIBehaviour
@@ -59,4 +65,8 @@ public class GameUIComponent : UIBehaviour
     public virtual void OnDeselect()
     {
     }
+
+	public virtual void OnPointerDown(PointerEventData eventData)
+	{
+	}
 }
