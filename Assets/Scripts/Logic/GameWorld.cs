@@ -14,7 +14,7 @@ public class GameWorld
 		for (var i = 0; i < levelData.Width; i++)
 		for (var j = 0; j < levelData.Height; j++)
 		{
-			var tileType = levelData.Tiles[i + j * levelData.Width];
+			var tileType = levelData.Tiles[i, j];
 			var tile = new Tile(this, i, j, tileType);
 			tiles[i, j] = tile;
 		}
