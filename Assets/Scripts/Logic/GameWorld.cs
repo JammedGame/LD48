@@ -67,6 +67,8 @@ public class GameWorld
 			// todo: add deposit instant reward
 		}
 
+		// todo: spend currencies.
+
 		// change tileboard
 		tiles[action.X, action.Y].SetTile(action.Facility);
 
@@ -79,6 +81,15 @@ public class GameWorld
 	{
 		var tile = GetTile(action.X, action.Y);
 		if (tile == null)
+			return false;
+
+		if (tile.Layer == Layer.Atmosphere)
+			return false;
+		if (tile.TileType == TileType.Core)
+			return false;
+		if (tile.TileType == TileType.Granite)
+			return false;
+		if (tile.TileType == TileType.Mineral && action.Facility != FacilityType.MineralExtractor)
 			return false;
 
 		// todo: validate price agains wallet
