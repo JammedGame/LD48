@@ -4,9 +4,10 @@ using UnityEngine;
 public enum Layer
 {
 	Undefined = 0,
-	A,
-	B,
-	C
+	Atmosphere = 1,
+	A = 2,
+	B = 3,
+	C = 4
 }
 
 public enum TileType

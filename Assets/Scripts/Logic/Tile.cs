@@ -21,7 +21,6 @@ public class Tile
 
 	private TileTypeSettings tileTypeSettings => GameSettings.Instance.GetSettings(TileType);
 
-
 	public TileType TileType { get; private set; }
 
 	public Tile GetAdjecentTile(Direction direction)
@@ -34,5 +33,10 @@ public class Tile
 			case Direction.Bottom: return World.GetTile(X, Y + 1);
 			default: throw new Exception($"Undefined direction: {direction}");
 		}
+	}
+
+	public override string ToString()
+	{
+		return $"Tile[{X}, {Y}] {TileType}_{Layer}";
 	}
 }

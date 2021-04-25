@@ -46,7 +46,7 @@ public class LevelGenerator : ScriptableObject
 	private TileData GetDefaultTileForHeight(int j)
 	{
 		if (j < AtmosphereEndsAt)
-			return new TileData(TileType.Atmosphere, Layer.Undefined);
+			return new TileData(TileType.Atmosphere, Layer.Atmosphere);
 		if (j < Soil1EndsAt)
 			return new TileData(TileType.Soil, Layer.A);
 		if (j < Soil2EndsAt)
