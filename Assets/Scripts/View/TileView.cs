@@ -46,7 +46,7 @@ public class TileView : MonoBehaviour
 			if (result)
 				return result;
 
-			result = Resources.Load<Texture>($"Tiles/{tile.TileType}_{tile.Layer}{bottomTile.Layer}");
+			result = Resources.Load<Texture>($"Tiles/{tile.TileType}_{tile.Layer}{bottomTile.Layer}_0");
 			if (result)
 				return result;
 		}
@@ -57,7 +57,7 @@ public class TileView : MonoBehaviour
 			return result;
 
 		// check layer only
-		result = Resources.Load<Texture>($"Tiles/{tile.TileType}_{tile.Layer}");
+		result = Resources.Load<Texture>($"Tiles/{tile.TileType}_{tile.Layer}_0");
 		if (result)
 			return result;
 
