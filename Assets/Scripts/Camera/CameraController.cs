@@ -61,16 +61,9 @@ public class CameraController : MonoBehaviour
 		right.Normalize();
 
 		// Move the camera (camera_target) Forward relative to current rotation if "W" is pressed or if the mouse moves within the borderWidth distance from the top edge of the screen
-		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) pos += up * (PanSpeed * Time.deltaTime);
 
-		// Move the camera (camera_target) Backward relative to current rotation if "S" is pressed or if the mouse moves within the borderWidth distance from the bottom edge of the screen
-		if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) pos -= up * (PanSpeed * Time.deltaTime);
-
-		// Move the camera (camera_target) Right relative to current rotation if "D" is pressed or if the mouse moves within the borderWidth distance from the right edge of the screen
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) pos += right * (PanSpeed * Time.deltaTime);
-
-		// Move the camera (camera_target) Left relative to current rotation if "A" is pressed or if the mouse moves within the borderWidth distance from the left edge of the screen
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) pos -= right * (PanSpeed * Time.deltaTime);
+		pos.x += Input.GetAxis("Horizontal") * PanSpeed * Time.deltaTime;
+		pos.y += Input.GetAxis("Vertical") * PanSpeed * Time.deltaTime;
 
 		ClampXY(ref pos);
 
