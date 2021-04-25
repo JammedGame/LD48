@@ -37,10 +37,22 @@ public class LevelGenerator : ScriptableObject
 		for (int i = 0; i < levelData.Width; i++)
 			for (int j = 0; j < levelData.Height; j++)
 			{
-				tiles[i, j] = TileType.Soil_A;
+				tiles[i, j] = GetDefaultTileForHeight(j);
 			}
 
 		return tiles;
+	}
+
+	private TileType GetDefaultTileForHeight(int j)
+	{
+		if (j < AtmosphereEndsAt)
+			return TileType.Atmosphere;
+		if (j < Soil1EndsAt)
+			return TileType.Soil_A;
+		if (j < Soil2EndsAt)
+			return TileType.Soil_B;
+
+		return TileType.Soil_C;
 	}
 
 	private int[,] GenerateSoilVariantsMatrix(LevelData levelData)
