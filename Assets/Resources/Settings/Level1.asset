@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b88673e449d8348970c8027e487c00, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  Width: 15
+  Width: 25
   AtmosphereHeight: 5
   Soil1Height: 12
   Soil2Height: 8
   Soil3Height: 5
   CoreHeight: 5
-  TerraformingFacilityInitialPosition: {x: 7, y: 4}
+  TerraformingFacilityInitialPosition: {x: 0, y: 0}
   MineralProbabilityByHeight:
     serializedVersion: 2
     m_Curve:
