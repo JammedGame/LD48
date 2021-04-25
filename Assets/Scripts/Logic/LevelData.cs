@@ -15,8 +15,3 @@ public class LevelData
 	public Vector2Int TerraformerTile;
 	public LevelGenerator Parent;
 }
-
-public struct TileData
-{
-	public TileType TileType;
-}
