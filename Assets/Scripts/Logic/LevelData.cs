@@ -6,16 +6,16 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
 	public int Width = 15;
-	public int SkyHeight = 5;
+	public int AtmosphereHeight = 5;
 	public int Soil1Height = 12;
 	public int Soil2Height = 8;
 	public int Soil3Height = 5;
 	public int CoreHeight = 5;
-	public int SkyEndsAt => SkyHeight;
-	public int Soil1EndsAt => SkyHeight + Soil1Height;
-	public int Soil2EndsAt => SkyHeight + Soil1Height + Soil2Height;
-	public int Soil3EndsAt => SkyHeight + Soil1Height + Soil2Height + Soil3Height;
-	public int Height => SkyHeight + Soil1Height + Soil2Height + Soil3Height + CoreHeight;
+	public int AtmosphereEndsAt => AtmosphereHeight;
+	public int Soil1EndsAt => AtmosphereHeight + Soil1Height;
+	public int Soil2EndsAt => AtmosphereHeight + Soil1Height + Soil2Height;
+	public int Soil3EndsAt => AtmosphereHeight + Soil1Height + Soil2Height + Soil3Height;
+	public int Height => AtmosphereHeight + Soil1Height + Soil2Height + Soil3Height + CoreHeight;
 	public Vector2Int TerraformingFacilityInitialPosition;
 	public AnimationCurve MineralProbabilityByHeight;
 	public AnimationCurve BetterMineralProbabilityByWidth;

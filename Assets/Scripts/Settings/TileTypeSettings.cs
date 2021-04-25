@@ -6,8 +6,8 @@ public class TileTypeSettings
 {
 	public TileType TileType;
 	public string Name;
+	public bool IsFacility;
 	public FacilitySettings FacilitySettings;
-	public bool IsFacility => FacilitySettings != null;
 }
 
 [Serializable]
@@ -80,7 +80,7 @@ public class Requirements
 	public TileType[] GlobalFacilityRequirement;
 	public TileType[] AdjacentTileRequirements;
 
-	public bool IsAllowed(TileType[] allFacilities, TileType[] adjacentTiles)
+	public bool AreMet(TileType[] allFacilities, TileType[] adjacentTiles)
 	{
 		// todo jole
 		return false;

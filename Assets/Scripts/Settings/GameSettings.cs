@@ -65,6 +65,15 @@ public class GameSettings : ScriptableObject
                     };
                     SettingsPerType.Add(settings);
                 }
+
+                if (settings.Name == null || settings.Name.Length == 0)
+                {
+                    settings.Name = settings.TileType.ToString();
+                }
+
+                settings.IsFacility = (int)settings.TileType > 100;
+                if (settings.IsFacility) settings.FacilitySettings = new FacilitySettings();
+                else settings.FacilitySettings = null;
             }
 
             SettingsPerType.Sort((a, b) => a.TileType.CompareTo(b.TileType));

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SettingsPerType:
   - TileType: 0
-    Name: 
+    Name: Undefined
+    IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -40,7 +41,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 1
-    Name: 
+    Name: Atmosphere
+    IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -66,7 +68,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 2
-    Name: 
+    Name: Soil1
+    IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -92,7 +95,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 3
-    Name: 
+    Name: Soil2
+    IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -118,7 +122,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 4
-    Name: 
+    Name: Soil3
+    IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -144,7 +149,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 5
-    Name: 
+    Name: Mineral1
+    IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -170,7 +176,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 6
-    Name: 
+    Name: Mineral2
+    IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -196,7 +203,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 7
-    Name: 
+    Name: Mineral3
+    IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -222,7 +230,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 8
-    Name: 
+    Name: Granite
+    IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -248,7 +257,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 9
-    Name: 
+    Name: Magma
+    IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -274,7 +284,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 10
-    Name: 
+    Name: Core
+    IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -300,7 +311,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 11
-    Name: 
+    Name: DepositPerk
+    IsFacility: 0
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -326,7 +338,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 101
-    Name: 
+    Name: TerraformingFacility
+    IsFacility: 1
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -352,7 +365,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 102
-    Name: 
+    Name: Tunnel
+    IsFacility: 1
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -378,7 +392,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 103
-    Name: 
+    Name: MineralExtractor
+    IsFacility: 1
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -404,7 +419,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 104
-    Name: 
+    Name: PowerPlant
+    IsFacility: 1
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -430,7 +446,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 105
-    Name: 
+    Name: Battery
+    IsFacility: 1
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -456,7 +473,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 106
-    Name: 
+    Name: GeothermalPlant
+    IsFacility: 1
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -482,7 +500,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 107
-    Name: 
+    Name: Booster
+    IsFacility: 1
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -508,7 +527,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 108
-    Name: 
+    Name: NuclearPlant
+    IsFacility: 1
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -534,7 +554,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 109
-    Name: 
+    Name: BuildBotFacility
+    IsFacility: 1
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
@@ -560,7 +581,8 @@ MonoBehaviour:
         GlobalFacilityRequirement: 
         AdjacentTileRequirements: 
   - TileType: 110
-    Name: 
+    Name: BFCoreExtractor
+    IsFacility: 1
     FacilitySettings:
       ConstructionTime: 0
       MineralPrice:
