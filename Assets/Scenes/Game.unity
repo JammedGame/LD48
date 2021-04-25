@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelGenerator: {fileID: 11400000, guid: 26e8429655303f64b8c065ebcaa0866b, type: 2}
   CameraController: {fileID: 1968993904}
+  UIController: {fileID: 1323026340}
 --- !u!4 &275359213
 Transform:
   m_ObjectHideFlags: 0
@@ -166,6 +167,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1323026340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1323026340, guid: 0b7b6f468d6508a449d8e54146c91a40,
+    type: 3}
+  m_PrefabInstance: {fileID: 6217977140422747371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f36fc522b81c34da7192835ee1d0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1744317096
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +258,7 @@ GameObject:
   - component: {fileID: 1968993906}
   m_Layer: 0
   m_Name: '[Camera]'
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Facility: 0
 --- !u!1 &1370830494950864858
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Facility: 102
 --- !u!1 &1537774412673514415
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Facility: 0
 --- !u!1 &5063778135796485198
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Facility: 0
 --- !u!1 &5833369604504569735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,6 +1134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Facility: 0
 --- !u!1 &5924962438987737004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,6 +1267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Facility: 103
 --- !u!1 &6178499388938673746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,6 +1665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Facility: 0
 --- !u!1 &6508550433360462276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,6 +2032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Facility: 0
 --- !u!1 &8983113809508123368
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,3 +2165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8eb879d54b5fc14abab99f4c608ce10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Facility: 0

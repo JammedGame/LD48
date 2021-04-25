@@ -12,6 +12,8 @@ public class GameWorld
 	public int Energy { get; private set; }
 	public int EnergyCap { get; private set; }
 
+	public event Action<PlayerAction> OnTurnOver;
+
 	public GameWorld(LevelData levelData)
 	{
 		LevelData = levelData;
@@ -62,10 +64,14 @@ public class GameWorld
 		var tile = GetTile(action.X, action.Y);
 		if (tile.TileType == TileType.Deposit)
 		{
-			// add deposit instant reward
+			// todo: add deposit instant reward
 		}
 
+		// change tileboard
+		tiles[action.X, action.Y].SetTile(action.Facility);
+
 		ProcessTurn();
+		OnTurnOver?.Invoke(action);
 		return true;
 	}
 
@@ -75,20 +81,24 @@ public class GameWorld
 		if (tile == null)
 			return false;
 
-		// validate price agains wallet
-		// validate tech tree
-		// validate special tile conditions
+		// todo: validate price agains wallet
+		// todo: validate tech tree
+		// todo: validate special tile conditions
 
 		return true;
 	}
 
 	public void ProcessTurn()
 	{
+		// todo: spend energy
+		// todo: gain minerals
+		// todo: gain energy
+		// todo: cap energy
 	}
 }
 
 public struct PlayerAction
 {
-	public TileType TileToPlace;
+	public FacilityType Facility;
 	public int X, Y;
 }

@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
 	// serialized
 	public LevelGenerator LevelGenerator;
 	public CameraController CameraController;
+	public GameUIController UIController;
+	public GameWorld ActiveGame => active;
 
 	// runtime
 	TileViewController viewController;

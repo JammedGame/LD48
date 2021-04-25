@@ -8,15 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TileMaterial
-  m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 3964de13ce8c1094e9b6eaf42393a486, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses:
-  - ALWAYS
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -57,6 +56,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - HARDWARE_BlendDst: 10
+    - HARDWARE_BlendSrc: 5
+    - HARDWARE_CullMode: 2
+    - HARDWARE_Offset: 0
+    - HARDWARE_ReadMask: 255
+    - HARDWARE_StencilComp: 0
+    - HARDWARE_StencilFail: 0
+    - HARDWARE_StencilPass: 0
+    - HARDWARE_StencilRef: 0
+    - HARDWARE_StencilZFail: 0
+    - HARDWARE_WriteMask: 255
+    - HARDWARE_ZTest: 4
+    - HARDWARE_ZWrite: 0
     - _BlendOp: 0
     - _BumpScale: 1
     - _CameraFadingEnabled: 0

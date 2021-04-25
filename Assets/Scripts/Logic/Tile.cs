@@ -8,6 +8,9 @@ public class Tile
 	public readonly int X, Y;
 	public readonly int SoilVariant;
 	public readonly Layer Layer;
+	public readonly TileType TileType;
+	public FacilityType FacilityType { get; private set; }
+	public bool HasFacility => FacilityType != FacilityType.None;
 
 	public Tile(GameWorld world, int x, int y, TileData tileData, int soilVariant)
 	{
@@ -15,13 +18,13 @@ public class Tile
 		TileType = tileData.TileType;
 		Layer = tileData.Layer;
 		SoilVariant = soilVariant;
+		FacilityType = tileData.FacilityType;
 		X = x;
 		Y = y;
 	}
 
 	private TileTypeSettings tileTypeSettings => GameSettings.Instance.GetSettings(TileType);
-
-	public TileType TileType { get; private set; }
+	private FacilitySettings facilitySettings => GameSettings.Instance.GetSettings(FacilityType);
 
 	public Tile GetAdjecentTile(Direction direction)
 	{
@@ -38,5 +41,10 @@ public class Tile
 	public override string ToString()
 	{
 		return $"Tile[{X}, {Y}] {TileType}_{Layer}";
+	}
+
+	public void SetTile(FacilityType facility)
+	{
+		FacilityType = facility;
 	}
 }

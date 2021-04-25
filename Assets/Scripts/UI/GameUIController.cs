@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 public class GameUIController : MonoBehaviour
 {
+	public GameWorld GameWorld => FindObjectOfType<GameController>().ActiveGame;
 	public GameUIComponent SelectedAction => selectedAction;
 	GameUIComponent selectedAction;
 

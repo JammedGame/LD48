@@ -1,9 +1,11 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class TileView : MonoBehaviour
 {
 	[SerializeField] private MeshRenderer meshRenderer;
+	[SerializeField] private MeshRenderer facilityMeshRenderer;
 
 	public Tile Tile { get; private set; }
 
@@ -12,22 +14,35 @@ public class TileView : MonoBehaviour
 		var tileView = Instantiate(tileViewPrefab, tile.GetPosition3D(), Quaternion.identity);
 		tileView.name = $"Tile[{tile.X}, {tile.Y}]";
 		tileView.Tile = tile;
-		tileView.UpdateMaterialAndRotation();
+		tileView.UpdateMaterial();
 		return tileView;
 	}
 
-	public void UpdateMaterialAndRotation()
+	public void UpdateMaterial()
 	{
 		if (Tile.TileType == TileType.Undefined)
 		{
 			meshRenderer.enabled = false;
+			facilityMeshRenderer.enabled = false;
 			return;
 		}
 
+		// update main tile
 		var tex = GetTextureForTile(Tile);
 		meshRenderer.material.mainTexture = tex;
-		meshRenderer.transform.localRotation = Quaternion.Euler(0f, 0f, 0);
 		meshRenderer.enabled = true;
+
+		// update facility
+		var facilityTexture = GetTextureForFacility(Tile);
+		if (facilityTexture != null)
+		{
+			facilityMeshRenderer.material.mainTexture = facilityTexture;
+			facilityMeshRenderer.enabled = true;
+		}
+		else
+		{
+			facilityMeshRenderer.enabled = false;
+		}
 	}
 
 	const string TileType_Format = "Tiles/{0}";
@@ -67,5 +82,26 @@ public class TileView : MonoBehaviour
 
 		Debug.LogError($"Failed to find texture found for tile: {tile}");
 		return null;
+	}
+
+	public static Texture GetTextureForFacility(Tile tile)
+	{
+		if (!tile.HasFacility)
+			return null;
+
+		if (tile.FacilityType == FacilityType.Tunnel)
+		{
+			return LoadTunnelTexture(tile);
+		}
+
+		//todo: other facilities.
+
+		return null;
+	}
+
+	private static Texture LoadTunnelTexture(Tile tile)
+	{
+		// todo: tetris logic
+		return Resources.Load<Texture>($"Tiles/Tunnel_{tile.Layer}_Cross");
 	}
 }

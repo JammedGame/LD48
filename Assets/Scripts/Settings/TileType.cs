@@ -21,7 +21,12 @@ public enum TileType
 	Deposit,
 	Granite,
 	Magma,
-	Core,
+	Core
+}
+
+public enum FacilityType
+{
+	None = 0,
 
 	// FACILITIES
 	TerraformingFacility = 101,
@@ -40,10 +45,12 @@ public struct TileData
 {
 	public TileType TileType;
 	public Layer Layer;
+	public FacilityType FacilityType; // for initial facilities placed on start.
 
-	public TileData(TileType tileType, Layer layer)
+	public TileData(TileType tileType, Layer layer, FacilityType facilityType = FacilityType.None)
 	{
 		TileType = tileType;
 		Layer = layer;
+		FacilityType = facilityType;
 	}
 }

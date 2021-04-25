@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public static class BoardUtil
@@ -15,5 +16,14 @@ public static class BoardUtil
 	public static Vector3 GetPosition3D(this Tile tile)
 	{
 		return TileCoordToPosition3D(tile.X, tile.Y);
+	}
+
+	public static Vector2Int Position3DToTileCoord(Vector3 point3D)
+	{
+		return new Vector2Int
+		(
+			Mathf.RoundToInt(point3D.x - 0.5f),
+			Mathf.RoundToInt(-point3D.y - 0.5f)
+		);
 	}
 }

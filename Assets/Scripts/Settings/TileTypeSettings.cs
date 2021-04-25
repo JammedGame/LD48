@@ -7,18 +7,6 @@ public class TileTypeSettings
 {
 	public TileType TileType;
 	public string Name;
-	public bool IsFacility;
-	public FacilitySettings FacilitySettings;
-}
-
-[Serializable]
-public class FacilitySettings
-{
-	public int ConstructionTime;
-	public MineralPrice MineralPrice;
-	public EnergyContribution EnergyContribution;
-	public Production Production;
-	public Requirements Requirements;
 }
 
 [Serializable]

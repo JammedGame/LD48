@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 public class PlacerButton : GameUIComponent,
 	IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
+	public FacilityType Facility;
+
 	public void OnBeginDrag(PointerEventData eventData)
 	{
 		UIController.SelectAction(this);
@@ -17,7 +19,26 @@ public class PlacerButton : GameUIComponent,
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
+        if (eventData.hovered != null && eventData.hovered.Count > 0 && !eventData.hovered[0].GetComponent<CameraController>())
+        {
+			Debug.Log("Drag ended over UI");
+			return;
+        }
+
+		PlaceFacility();
 		UIController.DeselectAction(this);
+	}
+
+    public void PlaceFacility()
+    {
+		var tileCoord = GetHoveredTile();
+		var action = new PlayerAction()
+		{
+			Facility = Facility,
+			X = tileCoord.x,
+			Y = tileCoord.y
+		};
+		UIController.GameWorld.ProcessAction(action);
 	}
 
 	public void OnPointerClick(PointerEventData eventData)
@@ -38,4 +59,20 @@ public class GameUIComponent : UIBehaviour
     public virtual void OnDeselect()
     {
     }
+
+    public Vector2Int GetHoveredTile()
+    {
+		var camera = Camera.main;
+		var ray = camera.ScreenPointToRay(Input.mousePosition);
+		var plane = new Plane(Vector3.back, Vector3.zero);
+        if (plane.Raycast(ray, out float dist))
+        {
+			var point3D = ray.GetPoint(dist);
+			return BoardUtil.Position3DToTileCoord(point3D);
+		}
+        else
+        {
+		    return new Vector2Int(99999, 99999);
+        }
+	}
 }

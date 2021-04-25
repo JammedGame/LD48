@@ -11,7 +11,9 @@ public class GameSettings : ScriptableObject
 
 	[Header("Tile Settings")]
     public List<TileTypeSettings> SettingsPerType;
-    public List<LevelGenerator> AllLevels;
+
+    [Header("Facility Settings")]
+    public List<FacilitySettings> FacilitySettings;
 
     public TileTypeSettings GetSettings(TileType tileType)
     {
@@ -20,6 +22,19 @@ public class GameSettings : ScriptableObject
             if (type.TileType == tileType)
             {
                 return type;
+            }
+        }
+
+        return null;
+    }
+
+    public FacilitySettings GetSettings(FacilityType type)
+    {
+        foreach(var setting in FacilitySettings)
+        {
+            if (setting.FacilityType == type)
+            {
+                return setting;
             }
         }
 
@@ -62,10 +77,6 @@ public class GameSettings : ScriptableObject
                 {
                     settings.Name = settings.TileType.ToString();
                 }
-
-                settings.IsFacility = (int)settings.TileType > 100;
-                if (settings.IsFacility) settings.FacilitySettings = new FacilitySettings();
-                else settings.FacilitySettings = null;
             }
 
             SettingsPerType.Sort((a, b) => a.TileType.CompareTo(b.TileType));

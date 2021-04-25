@@ -11,6 +11,12 @@ public class TileViewController
 	{
 		this.GameWorld = gameWorld;
 		this.TileViews = SpawnTileViews(gameWorld);
+		this.GameWorld.OnTurnOver += OnUpdate;
+	}
+
+	public void OnUpdate(PlayerAction action)
+	{
+		TileViews[action.X, action.Y].UpdateMaterial();
 	}
 
 	private static TileView[,] SpawnTileViews(GameWorld gameWorld)
