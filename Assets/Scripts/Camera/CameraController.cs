@@ -1,6 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CameraController : MonoBehaviour
+public class CameraController : BaseRaycaster,
+	IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 	// Serialized
 	public Camera Camera;
@@ -9,8 +12,8 @@ public class CameraController : MonoBehaviour
 	public float ZoomMax = 10;
 
 	// runtime
-	private Vector3 lastMousePos;
 	private Vector3 posDelta;
+	private bool isDragging;
 
 	// edges
 	private float rightEdge;
@@ -19,6 +22,7 @@ public class CameraController : MonoBehaviour
 	private float bottomEdge;
 	private float topToBottom => topEdge - bottomEdge;
 	private float rightToLeft => rightEdge - leftEdge;
+	public override Camera eventCamera => Camera;
 
 	public void Initialize(LevelData levelData)
 	{
@@ -33,7 +37,7 @@ public class CameraController : MonoBehaviour
 	{
 		Zoom();
 		Movement();
-		Drag();
+		DragMomentum();
 	}
 
 	private void Movement()
@@ -93,39 +97,23 @@ public class CameraController : MonoBehaviour
 		Camera.orthographicSize = currentZoom;
 	}
 
-	private void Drag()
+	private void DragMomentum()
 	{
+		if (isDragging)
+		{
+			return;
+		}
+		if (Mathf.Approximately(posDelta.magnitude, 0f))
+		{
+			posDelta = Vector3.zero;
+			return;
+		}
+
 		var pos = transform.position;
-		var newMousePos = Input.mousePosition;
-		var mouseDelta = newMousePos - lastMousePos;
-
-		var dragSpeed = Camera.orthographicSize * 2 / Screen.height;
-
-		if (Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2))
-		{
-			if (!Mathf.Approximately(mouseDelta.magnitude, 0f))
-			{
-				// drag
-				posDelta = mouseDelta * dragSpeed;
-				pos -= posDelta;
-			}
-			else
-			{
-				// momentum (holding)
-				posDelta = Vector3.Lerp(posDelta, Vector3.zero, 0.2f);
-			}
-		}
-		else if (!Mathf.Approximately(posDelta.magnitude, 0f))
-		{
-			// momentum (released)
-			posDelta = Vector3.Lerp(posDelta, Vector3.zero, 0.2f);
-			pos -= posDelta;
-		}
-
+		pos -= posDelta;
+		posDelta = Vector3.Lerp(posDelta, Vector3.zero, 0.1f);
 		ClampXY(ref pos);
-
 		transform.position = pos;
-		lastMousePos = newMousePos;
 	}
 
 	private void ClampXY(ref Vector3 pos)
@@ -160,5 +148,46 @@ public class CameraController : MonoBehaviour
 		{
 			pos.y = (bottomEdge + topEdge) / 2f;
 		}
+	}
+
+	public override void Raycast(PointerEventData eventData, List<RaycastResult> resultAppendList)
+	{
+		resultAppendList.Add(new RaycastResult()
+		{
+			gameObject = gameObject,
+			module = this
+		});
+	}
+
+	public void OnBeginDrag(PointerEventData eventData)
+	{
+		isDragging = true;
+	}
+
+	public void OnDrag(PointerEventData eventData)
+	{
+		var pos = transform.position;
+		var mouseDelta = eventData.delta;
+		var dragSpeed = Camera.orthographicSize * 2 / Screen.height;
+
+		if (!Mathf.Approximately(mouseDelta.magnitude, 0f))
+		{
+			// drag
+			posDelta = mouseDelta * dragSpeed;
+			pos -= posDelta;
+		}
+		else
+		{
+			// momentum (holding)
+			posDelta = Vector3.Lerp(posDelta, Vector3.zero, 0.2f);
+		}
+
+		ClampXY(ref pos);
+		transform.position = pos;
+	}
+
+	public void OnEndDrag(PointerEventData eventData)
+	{
+		isDragging = false;
 	}
 }
