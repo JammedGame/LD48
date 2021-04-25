@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
 	public CameraController CameraController;
 
 	// runtime
+	TileViewController viewController;
 	GameWorld active;
 
 	void Start()
@@ -16,6 +17,7 @@ public class GameController : MonoBehaviour
 		var levelData = LevelGenerator.Generate();
 
 		active = new GameWorld(levelData);
+		viewController = new TileViewController(active);
 		CameraController.Initialize(levelData);
 	}
 

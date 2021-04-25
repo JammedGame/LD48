@@ -20,20 +20,6 @@ public class GameSettings : ScriptableObject
         return null;
     }
 
-    public (Texture texture, Texture overlayTexture) GetTexture(TileType tileType)
-    {
-        if (!cache.TryGetValue((int)tileType, out var result))
-        {
-            var src = tileType;
-            result = (Resources.Load<Texture>($"Tiles/{src}"), Resources.Load<Texture>($"Tiles/{src}Overlay"));
-            cache[(int) tileType] = result;
-        }
-        return result;
-    }
-
-    Dictionary<int, (Texture texture, Texture overlayTexture)> cache =
-        new Dictionary<int, (Texture texture, Texture overlayTexture)>();
-
     static GameSettings instance;
 
     public static GameSettings Instance

@@ -15,7 +15,8 @@ public class GameWorld
 		for (var j = 0; j < levelData.Height; j++)
 		{
 			var tileType = levelData.Tiles[i, j];
-			var tile = new Tile(this, i, j, tileType);
+			var soilVariant = levelData.SoilVariants[i, j];
+			var tile = new Tile(this, i, j, tileType, soilVariant);
 			tiles[i, j] = tile;
 		}
 	}

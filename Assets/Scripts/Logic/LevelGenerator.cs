@@ -35,13 +35,38 @@ public class LevelGenerator : ScriptableObject
 			Parent = this
 		};
 
+		// do variants
+		levelData.SoilVariants = GenerateSoilVariantsMatrix(levelData);
+
 		// todo dummy
 		for (int i = 0; i < levelData.Width; i++)
 			for (int j = 0; j < levelData.Height; j++)
 			{
-				tiles[i, j] = TileType.Soil1;
+				tiles[i, j] = TileType.Soil_A;
 			}
 
 		return levelData;
+	}
+
+	private int[,] GenerateSoilVariantsMatrix(LevelData levelData)
+	{
+		var variants = new int[Width, Height];
+
+		var variantPool = new int[] { 0, 0, 1, 1, 2, 2, 3 };
+
+		for (int i = 0; i < levelData.Width; i++)
+			for (int j = 0; j < levelData.Height; j++)
+			{
+				while (true)
+				{
+					var variant = variantPool[UnityEngine.Random.Range(0, variantPool.Length)];
+					if (i > 0 && variants[i - 1, j] == variant) continue;
+					if (j > 0 && variants[i, j - 1] == variant) continue;
+					variants[i, j] = variant;
+					break;
+				}
+			}
+
+		return variants;
 	}
 }

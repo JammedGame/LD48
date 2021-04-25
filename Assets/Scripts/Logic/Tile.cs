@@ -6,11 +6,13 @@ public class Tile
 {
 	public readonly GameWorld World;
 	public readonly int X, Y;
+	public readonly int SoilVariant;
 
-	public Tile(GameWorld world, int x, int y, TileType type)
+	public Tile(GameWorld world, int x, int y, TileType type, int soilVariant)
 	{
 		this.World = world;
 		TileType = type;
+		SoilVariant = soilVariant;
 		X = x;
 		Y = y;
 	}

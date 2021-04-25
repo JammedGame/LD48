@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
 	public void Initialize(LevelData levelData)
 	{
 		panLimit = new Vector2(levelData.Width, levelData.Height);
-		transform.position = levelData.TerraformerTile.TileCoordToPosition();
+		transform.position = levelData.TerraformerTile.TileCoordToPosition3D();
 		targetZoom = Camera.orthographicSize;
 	}
 
