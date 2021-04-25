@@ -12,5 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34107f39f5885a41b0454e1ad1c9e05, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  Width: 10
-  Height: 25
+  Width: 15
+  SkyHeight: 5
+  Soil1Height: 12
+  Soil2Height: 8
+  Soil3Height: 5
+  CoreHeight: 5
+  TerraformingFacilityInitialPosition: {x: 0, y: 0}
+  MineralProbabilityByHeight:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  BetterMineralProbabilityByWidth:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  GraniteProbabilityByHeight:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  MagmaProbabilityByHeight:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

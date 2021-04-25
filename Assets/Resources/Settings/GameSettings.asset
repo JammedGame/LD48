@@ -14,5 +14,576 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SettingsPerType:
   - TileType: 0
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 1
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 2
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 3
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 4
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 5
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 6
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 7
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 8
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 9
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 10
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 11
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 101
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 102
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 103
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 104
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 105
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 106
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 107
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 108
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 109
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
+  - TileType: 110
+    Name: 
+    FacilitySettings:
+      ConstructionTime: 0
+      MineralPrice:
+        FlatPrice: 0
+        DependsOnSoil: 0
+        Soil1Price: 0
+        Soil2Price: 0
+        Soil3Price: 0
+      EnergyContribution:
+        FlatContribution: 0
+        DependsOnAdjacentMagma: 0
+        PerAdjacentMagmaContribution: 0
+      Production:
+        MineralProduction:
+          FlatProduction: 0
+          DependsOnSoil: 0
+          Soil1Production: 0
+          Soil2Production: 0
+          Soil3Production: 0
+        AdjacentFacilitiesBoost: 0
+        ConstructionTimeReductionGlobal: 0
+      Requirements:
+        GlobalFacilityRequirement: 
+        AdjacentTileRequirements: 
   AllLevels:
   - {fileID: 11400000, guid: 26e8429655303f64b8c065ebcaa0866b, type: 2}
