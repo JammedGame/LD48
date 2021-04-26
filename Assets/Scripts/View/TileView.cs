@@ -95,8 +95,8 @@ public class TileView : MonoBehaviour
 		}
 
 		//todo: other facilities.
-
-		return null;
+		var result = Resources.Load<Texture>($"Tiles/{tile.FacilityType}_{tile.Layer}");
+		return result;
 	}
 
 	private static Texture LoadTunnelTexture(Tile tile)

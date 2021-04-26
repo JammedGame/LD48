@@ -10,11 +10,18 @@ using UnityEngine.EventSystems;
 public class GameUIController : MonoBehaviour
 {
 	public TooltipUI Tooltip;
-	public GameWorld GameWorld => FindObjectOfType<GameController>().ActiveGame;
+	public GameController GameController { get; private set; }
+	public GameWorld GameWorld => GameController.ActiveGame;
 	public GameUIComponent SelectedAction => selectedAction;
 	GameUIComponent selectedAction;
 
-	internal void DeselectAction(GameUIComponent placerButton)
+	public void Initialize(GameController game)
+	{
+		GameController = game;
+		Tooltip.ForceHideTooltip();
+	}
+
+	public void DeselectAction(GameUIComponent placerButton)
 	{
 		if (selectedAction == placerButton)
 		{
@@ -22,7 +29,7 @@ public class GameUIController : MonoBehaviour
 		}
 	}
 
-	internal void SelectAction(GameUIComponent placerButton)
+	public void SelectAction(GameUIComponent placerButton)
 	{
 		if (selectedAction != placerButton)
 		{

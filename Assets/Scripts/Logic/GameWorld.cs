@@ -99,6 +99,8 @@ public class GameWorld
 			return false;
 		if (tile.TileType == TileType.Mineral && action.Facility != FacilityType.MineralExtractor)
 			return false;
+		if (tile.TileType != TileType.Mineral && action.Facility == FacilityType.MineralExtractor)
+			return false;
 		if (tile.HasFacility)
 			return false;
 

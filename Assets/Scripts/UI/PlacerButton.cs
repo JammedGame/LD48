@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,14 +13,14 @@ public class PlacerButton : GameUIComponent,
 {
 	public TextMeshProUGUI Text;
 	public FacilityType Facility { get; private set; }
-	public FacilitySettings FacilitySettings { get; private set; }
+	public FacilitySettings Settings { get; private set; }
 	int tooltipShowToken;
 
 	public void Init(FacilityType facility)
 	{
 		Facility = facility;
-		FacilitySettings = GameSettings.Instance.GetSettings(facility);
-		Text.text = FacilitySettings.Name;
+		Settings = GameSettings.Instance.GetSettings(facility);
+		Text.text = Settings.Name;
 	}
 
 	public void OnBeginDrag(PointerEventData eventData)
@@ -68,12 +69,23 @@ public class PlacerButton : GameUIComponent,
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
-		UIController.Tooltip.ShowTooltip(rectTransform, Direction.Left, "Hello!", out tooltipShowToken);
+		ShowTooltip();
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
 		UIController.Tooltip.HideTooltip(tooltipShowToken);
+	}
+
+	private void ShowTooltip()
+	{
+		var tooltipText = CreateTooltipText();
+		UIController.Tooltip.ShowTooltip(rectTransform, Direction.Left, tooltipText, out tooltipShowToken);
+	}
+
+	public string CreateTooltipText()
+	{
+		return $"{Settings.Name} - {Settings.MineralPrice.FlatPrice}\n\n{Settings.Description}";
 	}
 }
 

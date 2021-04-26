@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
 
 		active = new GameWorld(levelData);
 		viewController = new TileViewController(active);
+		UIController.Initialize(this);
 		CameraController.Initialize(levelData);
 	}
 
