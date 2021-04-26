@@ -53,9 +53,8 @@ public struct TileData
 		FacilityType = facilityType;
 	}
 
-	public TileData WithFacility(FacilityType facility)
+	public TileData WithFacility(FacilityType facility, TileType tileType)
 	{
-		var newTileType = TileType == TileType.Deposit ? TileType.Soil : TileType; // remove deposit
-		return new TileData(newTileType, Layer, facility);
+		return new TileData(tileType, Layer, facility);
 	}
 }

@@ -106,10 +106,12 @@ public class LevelGenerator : ScriptableObject
 			}
 		}
 
-		// lander
+		// place lander
 		var startPoint = TerraformingFacilityInitialPosition;
-		tiles[startPoint.x, startPoint.y] = tiles[startPoint.x, startPoint.y].WithFacility(FacilityType.TerraformingFacility);
-		tiles[startPoint.x, startPoint.y + 1] = tiles[startPoint.x, startPoint.y + 1].WithFacility(FacilityType.Tunnel);
+		tiles[startPoint.x, startPoint.y] = tiles[startPoint.x, startPoint.y]
+			.WithFacility(FacilityType.TerraformingFacility, TileType.Surface);
+		tiles[startPoint.x, startPoint.y + 1] = tiles[startPoint.x, startPoint.y + 1]
+			.WithFacility(FacilityType.Tunnel, TileType.Soil);
 
 		return tiles;
 	}

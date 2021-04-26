@@ -8,6 +8,7 @@ public class Tile
 	public readonly int X, Y;
 	public readonly int SoilVariant;
 	public readonly Layer Layer;
+	public DirectionMask Connections;
 	public TileType TileType { get; private set; }
 	public FacilityType FacilityType { get; private set; }
 	public bool HasFacility => FacilityType != FacilityType.None;

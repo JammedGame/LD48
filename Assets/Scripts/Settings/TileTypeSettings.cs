@@ -110,3 +110,24 @@ public enum Direction
 	Top = 3,
 	Bottom = 4
 }
+
+public struct DirectionMask
+{
+	public bool Left;
+	public bool Right;
+	public bool Top;
+	public bool Bottom;
+
+	public bool Get(Direction dir)
+	{
+		switch(dir)
+		{
+			case Direction.Left: return Left;
+			case Direction.Top: return Top;
+			case Direction.Right: return Right;
+			case Direction.Bottom: return Bottom;
+		}
+
+		return false;
+	}
+}
