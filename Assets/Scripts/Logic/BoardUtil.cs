@@ -42,4 +42,7 @@ public static class BoardUtil
 			return new Vector2Int(99999, 99999);
 		}
 	}
+
+	public static FacilitySettings GetSettings(this FacilityType f) => GameSettings.Instance.GetSettings(f);
+	public static string GetName(this FacilityType f) => GameSettings.Instance.GetSettings(f).Name;
 }

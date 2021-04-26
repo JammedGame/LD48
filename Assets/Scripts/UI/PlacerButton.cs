@@ -85,7 +85,12 @@ public class PlacerButton : GameUIComponent,
 
 	public string CreateTooltipText()
 	{
-		return $"{Settings.Name} - {Settings.MineralPrice.FlatPrice}\n\n{Settings.Description}";
+		var isLocked = !UIController.GameWorld.IsFacilityTypeUnlocked(Facility);
+		var text = $"{Settings.Name} - {Settings.MineralPrice.FlatPrice}\n\n{Settings.Description}";
+		if (isLocked)
+			text += $"\n\nBuild {Settings.Requirements.RequirementToUnlock.GetName()} to unlock this facility";
+
+		return text;
 	}
 }
 
