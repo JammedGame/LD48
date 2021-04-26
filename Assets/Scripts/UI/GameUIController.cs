@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,6 +15,15 @@ public class GameUIController : MonoBehaviour
 	public GameWorld GameWorld => GameController.ActiveGame;
 	public GameUIComponent SelectedAction => selectedAction;
 	GameUIComponent selectedAction;
+
+	public string MineralsFormat;
+	public string EnergyFormat;
+	public TextMeshProUGUI Minerals;
+	public TextMeshProUGUI Energy;
+
+	private float lastMinerals = 0;
+	private float lastEnergy = 0;
+	private float lastEnergyCap = 0;
 
 	public void Initialize(GameController game)
 	{
@@ -36,6 +46,25 @@ public class GameUIController : MonoBehaviour
 			selectedAction?.OnDeselect();
 			selectedAction = placerButton;
 			selectedAction?.OnSelect();
+		}
+	}
+
+	public void Update()
+	{
+		if (GameWorld == null)
+			return;
+
+		if (lastMinerals != GameWorld.Minerals)
+		{
+			lastMinerals = Mathf.Lerp(lastMinerals, GameWorld.Minerals, Time.deltaTime * 2f);
+			Minerals.text = string.Format(MineralsFormat, Mathf.RoundToInt(lastMinerals));
+		}
+
+		if (lastEnergy != GameWorld.Energy || lastEnergyCap != GameWorld.EnergyCap)
+		{
+			lastEnergy = Mathf.Lerp(lastEnergy, GameWorld.Energy, Time.deltaTime * 2f);
+			lastEnergyCap = Mathf.Lerp(lastEnergyCap, GameWorld.EnergyCap, Time.deltaTime * 2f);
+			Energy.text = string.Format(EnergyFormat, Mathf.RoundToInt(lastMinerals), Mathf.RoundToInt(lastMinerals));
 		}
 	}
 }

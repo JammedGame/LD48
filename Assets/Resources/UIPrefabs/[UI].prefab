@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.08627451, g: 0.023529414, b: 0.007843138, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1092,6 +1092,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tooltip: {fileID: 1091527357}
+  MineralsFormat: 'MINERALS: {0}'
+  EnergyFormat: 'ENERGY: {0} / {1}'
+  Minerals: {fileID: 3064735133601948841}
+  Energy: {fileID: 3923046824567279772}
 --- !u!1 &7653809911676102537
 GameObject:
   m_ObjectHideFlags: 0
