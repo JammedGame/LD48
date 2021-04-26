@@ -40,16 +40,9 @@ public class MineralPrice
 [Serializable]
 public class EnergyContribution
 {
-	public int FlatContribution;
-	public bool DependsOnAdjacentMagma;
-	public int PerAdjacentMagmaContribution;
-
-	public int GetContribution(TileType[] adjacentTiles)
-	{
-		if (!DependsOnAdjacentMagma) return FlatContribution;
-
-		return FlatContribution + Array.FindAll(adjacentTiles, t => t == TileType.Magma).Length * PerAdjacentMagmaContribution;
-	}
+	public int ContributionLayer0;
+	public int ContributionLayer1;
+	public int ContributionLayer2;
 }
 
 [Serializable]
