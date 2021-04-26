@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class PlacerButton : GameUIComponent,
-	IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+	IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler,
+	IPointerEnterHandler, IPointerExitHandler
 {
 	public TextMeshProUGUI Text;
 	public FacilityType Facility { get; private set; }
 	public FacilitySettings FacilitySettings { get; private set; }
+	int tooltipShowToken;
 
 	public void Init(FacilityType facility)
 	{
@@ -22,6 +25,7 @@ public class PlacerButton : GameUIComponent,
 	public void OnBeginDrag(PointerEventData eventData)
 	{
 		UIController.SelectAction(this);
+		UIController.Tooltip.ForceHideTooltip();
 	}
 
 	public void OnDrag(PointerEventData eventData)
@@ -61,10 +65,21 @@ public class PlacerButton : GameUIComponent,
     {
 		PlaceFacility();
 	}
+
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		UIController.Tooltip.ShowTooltip(rectTransform, Direction.Left, "Hello!", out tooltipShowToken);
+	}
+
+	public void OnPointerExit(PointerEventData eventData)
+	{
+		UIController.Tooltip.HideTooltip(tooltipShowToken);
+	}
 }
 
 public class GameUIComponent : UIBehaviour
 {
+	public RectTransform rectTransform => transform as RectTransform;
 	public GameUIController UIController => GetComponentInParent<GameUIController>();
 	public bool IsSelected => UIController.SelectedAction == this;
 

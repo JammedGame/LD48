@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class GameUIController : MonoBehaviour
 {
+	public TooltipUI Tooltip;
 	public GameWorld GameWorld => FindObjectOfType<GameController>().ActiveGame;
 	public GameUIComponent SelectedAction => selectedAction;
 	GameUIComponent selectedAction;
