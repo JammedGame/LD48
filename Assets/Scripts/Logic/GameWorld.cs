@@ -95,11 +95,13 @@ public class GameWorld
 			return false;
 		if (tile.TileType == TileType.Granite)
 			return false;
-		if (tile.TileType == TileType.Magma)
-			return false;
 		if (tile.TileType == TileType.Mineral && action.Facility != FacilityType.MineralExtractor)
 			return false;
 		if (tile.TileType != TileType.Mineral && action.Facility == FacilityType.MineralExtractor)
+			return false;
+		if (tile.TileType == TileType.Magma && action.Facility != FacilityType.GeothermalPlant)
+			return false;
+		if (tile.TileType != TileType.Magma && action.Facility == FacilityType.GeothermalPlant)
 			return false;
 		if (tile.HasFacility)
 			return false;
