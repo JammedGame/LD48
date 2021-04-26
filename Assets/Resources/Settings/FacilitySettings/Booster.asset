@@ -22,9 +22,9 @@ MonoBehaviour:
     Soil2Price: 25
     Soil3Price: 100
   EnergyContribution:
-    FlatContribution: 0
-    DependsOnAdjacentMagma: 0
-    PerAdjacentMagmaContribution: 0
+    ContributionLayer0: 0
+    ContributionLayer1: 0
+    ContributionLayer2: 0
   Production:
     MineralProduction:
       FlatProduction: 0
@@ -35,5 +35,4 @@ MonoBehaviour:
     AdjacentFacilitiesBoost: 0
     ConstructionTimeReductionGlobal: 0
   Requirements:
-    GlobalFacilityRequirements: 
-    AdjacentTileRequirements: 
+    RequirementToUnlock: 0
