@@ -108,6 +108,12 @@ public class GameWorld
 			return false;
 		if (tile.TileType != TileType.Magma && action.Facility == FacilityType.GeothermalPowerPlant)
 			return false;
+		if (action.Facility == FacilityType.BFCoreExtractor)
+		{
+			var bottomIsCore = tile.GetAdjecentTile(Direction.Bottom) is Tile t && t.TileType == TileType.Core;
+			if (!bottomIsCore)
+				return false;
+		}
 		if (tile.HasFacility)
 			return false;
 		if (!IsFacilityTypeUnlocked(action.Facility))
