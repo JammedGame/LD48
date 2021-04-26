@@ -18,6 +18,13 @@ public class MineralPrice
 	public int Soil2Price;
 	public int Soil3Price;
 
+	public override string ToString()
+	{
+		return DependsOnSoil
+			? $"{Soil1Price} / {Soil2Price} / {Soil3Price}"
+			: $"{FlatPrice}";
+	}
+
 	public int GetPrice(Layer layer)
 	{
 		if (!DependsOnSoil)
