@@ -7,6 +7,11 @@ public class TileView : MonoBehaviour
 	[SerializeField] private MeshRenderer meshRenderer;
 	[SerializeField] private MeshRenderer facilityMeshRenderer;
 
+	[SerializeField] private MeshRenderer approachLeft;
+	[SerializeField] private MeshRenderer approachRight;
+	[SerializeField] private MeshRenderer approachTop;
+	[SerializeField] private MeshRenderer approachBottom;
+
 	public Tile Tile { get; private set; }
 
 	public static TileView CreateView(Tile tile, TileView tileViewPrefab)
@@ -38,9 +43,17 @@ public class TileView : MonoBehaviour
 		{
 			facilityMeshRenderer.material.mainTexture = facilityTexture;
 			facilityMeshRenderer.enabled = true;
+			approachLeft.enabled = Tile.HasAdjecentTunnel(Direction.Left);
+			approachTop.enabled = Tile.HasAdjecentTunnel(Direction.Top);
+			approachRight.enabled = Tile.HasAdjecentTunnel(Direction.Right);
+			approachBottom.enabled = Tile.HasAdjecentTunnel(Direction.Bottom);
 		}
 		else
 		{
+			approachLeft.enabled = false;
+			approachTop.enabled = false;
+			approachRight.enabled = false;
+			approachBottom.enabled = false;
 			facilityMeshRenderer.enabled = false;
 		}
 	}
@@ -95,7 +108,7 @@ public class TileView : MonoBehaviour
 		}
 
 		//todo: other facilities.
-		var result = Resources.Load<Texture>($"Tiles/{tile.FacilityType}_{tile.Layer}");
+		var result = Resources.Load<Texture>($"Tiles/{tile.FacilityType}_{tile.Layer}_0");
 		return result;
 	}
 

@@ -12,6 +12,7 @@ public class Tile
 	public TileType TileType { get; private set; }
 	public FacilityType FacilityType { get; private set; }
 	public bool HasFacility => FacilityType != FacilityType.None;
+	public bool IsTunnel => FacilityType == FacilityType.Tunnel;
 
 	public Tile(GameWorld world, int x, int y, TileData tileData, int soilVariant)
 	{
@@ -63,6 +64,8 @@ public class Tile
 			default: throw new Exception($"Undefined direction: {direction}");
 		}
 	}
+
+	public bool HasAdjecentTunnel(Direction direction) => GetAdjecentTile(direction) is Tile tile && tile.IsTunnel;
 
 	public override string ToString()
 	{
