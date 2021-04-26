@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: PowerPlant
   m_EditorClassIdentifier: 
   FacilityType: 104
-  Name: Power Plant
-  Description: 
+  Name: POWER PLANT
+  Description: "Power generator facility. \r\nPrerequisite for Battery.\r\n"
   MineralPrice:
-    FlatPrice: 0
-    DependsOnSoil: 1
-    Soil1Price: 10
-    Soil2Price: 25
-    Soil3Price: 100
+    FlatPrice: 200
+    DependsOnSoil: 0
+    Soil1Price: 0
+    Soil2Price: 0
+    Soil3Price: 0
   EnergyContribution:
-    FlatContribution: 0
-    DependsOnAdjacentMagma: 0
-    PerAdjacentMagmaContribution: 0
+    ContributionLayer0: 100
+    ContributionLayer1: 100
+    ContributionLayer2: 100
   Production:
     MineralProduction:
       FlatProduction: 0
@@ -35,5 +35,4 @@ MonoBehaviour:
     AdjacentFacilitiesBoost: 0
     ConstructionTimeReductionGlobal: 0
   Requirements:
-    GlobalFacilityRequirements: 
-    AdjacentTileRequirements: 
+    RequirementToUnlock: 0

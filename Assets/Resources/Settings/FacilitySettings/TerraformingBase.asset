@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TerraformingBase
   m_EditorClassIdentifier: 
   FacilityType: 101
-  Name: Terraforming Facility
+  Name: TERRAFORMING FACILITY
   Description: 
   MineralPrice:
     FlatPrice: 100
@@ -22,9 +22,9 @@ MonoBehaviour:
     Soil2Price: 25
     Soil3Price: 100
   EnergyContribution:
-    FlatContribution: 0
-    DependsOnAdjacentMagma: 0
-    PerAdjacentMagmaContribution: 0
+    ContributionLayer0: 0
+    ContributionLayer1: 0
+    ContributionLayer2: 0
   Production:
     MineralProduction:
       FlatProduction: 0

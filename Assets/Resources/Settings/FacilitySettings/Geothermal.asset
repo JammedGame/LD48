@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: Geothermal
   m_EditorClassIdentifier: 
   FacilityType: 106
-  Name: Geothermal
-  Description: 
+  Name: GEOTHERMAL PLANT
+  Description: "Power generator facility. Deeper Lava \U0001F30Btiles yield more
+    energy.\r\nRequires Power Plant. Must be built on Lava tile.\r"
   MineralPrice:
-    FlatPrice: 0
-    DependsOnSoil: 1
-    Soil1Price: 10
-    Soil2Price: 25
-    Soil3Price: 100
+    FlatPrice: 150
+    DependsOnSoil: 0
+    Soil1Price: 0
+    Soil2Price: 0
+    Soil3Price: 0
   EnergyContribution:
-    FlatContribution: 0
-    DependsOnAdjacentMagma: 0
-    PerAdjacentMagmaContribution: 0
+    ContributionLayer0: 70
+    ContributionLayer1: 140
+    ContributionLayer2: 210
   Production:
     MineralProduction:
       FlatProduction: 0
@@ -35,5 +36,4 @@ MonoBehaviour:
     AdjacentFacilitiesBoost: 0
     ConstructionTimeReductionGlobal: 0
   Requirements:
-    GlobalFacilityRequirements: 
-    AdjacentTileRequirements: 
+    RequirementToUnlock: 104

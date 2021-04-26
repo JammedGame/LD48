@@ -13,27 +13,28 @@ MonoBehaviour:
   m_Name: Mineral Extractor
   m_EditorClassIdentifier: 
   FacilityType: 103
-  Name: Extractor
-  Description: 
+  Name: EXTRACTOR
+  Description: "Mineral extraction facility. Its output depends on the type of mineral
+    - Minerals closer to the core are richer. \r\nMust be built on Mineral\U0001F48E
+    [mineral] tile.\r\n"
   MineralPrice:
-    FlatPrice: 0
-    DependsOnSoil: 1
-    Soil1Price: 10
-    Soil2Price: 25
-    Soil3Price: 100
+    FlatPrice: 100
+    DependsOnSoil: 0
+    Soil1Price: 0
+    Soil2Price: 0
+    Soil3Price: 0
   EnergyContribution:
-    FlatContribution: 0
-    DependsOnAdjacentMagma: 0
-    PerAdjacentMagmaContribution: 0
+    ContributionLayer0: -25
+    ContributionLayer1: -25
+    ContributionLayer2: -25
   Production:
     MineralProduction:
       FlatProduction: 0
-      DependsOnSoil: 0
-      Soil1Production: 0
-      Soil2Production: 0
-      Soil3Production: 0
+      DependsOnSoil: 1
+      Soil1Production: 10
+      Soil2Production: 25
+      Soil3Production: 100
     AdjacentFacilitiesBoost: 0
     ConstructionTimeReductionGlobal: 0
   Requirements:
-    GlobalFacilityRequirements: 
-    AdjacentTileRequirements: 
+    RequirementToUnlock: 0

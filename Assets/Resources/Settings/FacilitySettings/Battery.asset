@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: Battery
   m_EditorClassIdentifier: 
   FacilityType: 105
-  Name: Battery
-  Description: 
+  Name: BATTERY
+  Description: "Power storage facility. Increases Energy Cap by 500 [energy]\u26A1.
+    \r\nRequires Power Plant.\r\n"
   MineralPrice:
-    FlatPrice: 0
-    DependsOnSoil: 1
-    Soil1Price: 10
-    Soil2Price: 25
-    Soil3Price: 100
+    FlatPrice: 250
+    DependsOnSoil: 0
+    Soil1Price: 0
+    Soil2Price: 0
+    Soil3Price: 0
   EnergyContribution:
-    FlatContribution: 0
-    DependsOnAdjacentMagma: 0
-    PerAdjacentMagmaContribution: 0
+    ContributionLayer0: 0
+    ContributionLayer1: 0
+    ContributionLayer2: 0
   Production:
     MineralProduction:
       FlatProduction: 0

@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: BuildBot
   m_EditorClassIdentifier: 
   FacilityType: 109
-  Name: BuildBots
-  Description: 
+  Name: BUILDBOT FACTORY
+  Description: 'BuildBot production facility. Unlocks a permanent +1 production slot,
+    enabling more production per turn.
+
+    Requires Booster.'
   MineralPrice:
-    FlatPrice: 0
-    DependsOnSoil: 1
-    Soil1Price: 10
-    Soil2Price: 25
-    Soil3Price: 100
+    FlatPrice: 1000
+    DependsOnSoil: 0
+    Soil1Price: 0
+    Soil2Price: 0
+    Soil3Price: 0
   EnergyContribution:
-    FlatContribution: 0
-    DependsOnAdjacentMagma: 0
-    PerAdjacentMagmaContribution: 0
+    ContributionLayer0: -200
+    ContributionLayer1: -200
+    ContributionLayer2: -200
   Production:
     MineralProduction:
       FlatProduction: 0
@@ -33,7 +36,6 @@ MonoBehaviour:
       Soil2Production: 0
       Soil3Production: 0
     AdjacentFacilitiesBoost: 0
-    ConstructionTimeReductionGlobal: 0
+    ConstructionTimeReductionGlobal: 1
   Requirements:
-    GlobalFacilityRequirements: 
-    AdjacentTileRequirements: 
+    RequirementToUnlock: 107

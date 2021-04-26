@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: Booster
   m_EditorClassIdentifier: 
   FacilityType: 107
-  Name: Booster
-  Description: 
+  Name: BOOSTER
+  Description: "Support facility. Adds +75% [mineral]\U0001F48E income to adj. Extractors.
+    \r\nRequires Battery. Prerequisite for Nuclear Plant, BuildBot Factory."
   MineralPrice:
-    FlatPrice: 0
-    DependsOnSoil: 1
-    Soil1Price: 10
-    Soil2Price: 25
-    Soil3Price: 100
+    FlatPrice: 200
+    DependsOnSoil: 0
+    Soil1Price: 0
+    Soil2Price: 0
+    Soil3Price: 0
   EnergyContribution:
-    ContributionLayer0: 0
-    ContributionLayer1: 0
-    ContributionLayer2: 0
+    ContributionLayer0: -100
+    ContributionLayer1: -100
+    ContributionLayer2: -100
   Production:
     MineralProduction:
       FlatProduction: 0
@@ -35,4 +36,4 @@ MonoBehaviour:
     AdjacentFacilitiesBoost: 0
     ConstructionTimeReductionGlobal: 0
   Requirements:
-    RequirementToUnlock: 0
+    RequirementToUnlock: 105
