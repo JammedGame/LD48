@@ -8,7 +8,7 @@ public class Tile
 	public readonly int X, Y;
 	public readonly int SoilVariant;
 	public readonly Layer Layer;
-	public readonly TileType TileType;
+	public TileType TileType { get; private set; }
 	public FacilityType FacilityType { get; private set; }
 	public bool HasFacility => FacilityType != FacilityType.None;
 
@@ -26,6 +26,23 @@ public class Tile
 	private TileTypeSettings tileTypeSettings => GameSettings.Instance.GetSettings(TileType);
 	private FacilitySettings facilitySettings => GameSettings.Instance.GetSettings(FacilityType);
 
+	public FacilityType GetAdjecentFacility(Direction direction)
+	{
+		var tile = GetAdjecentTile(direction);
+		return tile != null ? tile.FacilityType : FacilityType.None;
+	}
+
+	public int CountNeighbourFacilities(FacilityType type)
+	{
+		int count = 0;
+		if (GetAdjecentFacility(Direction.Left) == type) count++;
+		if (GetAdjecentFacility(Direction.Top) == type) count++;
+		if (GetAdjecentFacility(Direction.Right) == type) count++;
+		if (GetAdjecentFacility(Direction.Bottom) == type) count++;
+		return count;
+	}
+
+
 	public Tile GetAdjecentTile(Direction direction)
 	{
 		switch (direction)
@@ -41,6 +58,17 @@ public class Tile
 	public override string ToString()
 	{
 		return $"Tile[{X}, {Y}] {TileType}_{Layer}";
+	}
+
+	public bool ExtractSoilDeposits()
+	{
+		if (TileType == TileType.Deposit)
+		{
+			TileType = TileType.Soil;
+			return true;
+		}
+
+		return false;
 	}
 
 	public void SetTile(FacilityType facility)

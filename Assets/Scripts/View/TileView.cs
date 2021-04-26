@@ -102,6 +102,36 @@ public class TileView : MonoBehaviour
 	private static Texture LoadTunnelTexture(Tile tile)
 	{
 		// todo: tetris logic
-		return Resources.Load<Texture>($"Tiles/Tunnel_{tile.Layer}_Cross");
+		var upTileHasFacility = tile.GetAdjecentTile(Direction.Top) is Tile topTile && topTile.HasFacility;
+		var downTileHasFacility = tile.GetAdjecentTile(Direction.Bottom) is Tile bottomTile && bottomTile.HasFacility;
+		var leftTileHasFacility = tile.GetAdjecentTile(Direction.Left) is Tile leftTile && leftTile.HasFacility;
+		var rightTileHasFacility = tile.GetAdjecentTile(Direction.Right) is Tile rightTile && rightTile.HasFacility;
+		var tunnelName = GetTunnelName(leftTileHasFacility, rightTileHasFacility, upTileHasFacility, downTileHasFacility);
+		return Resources.Load<Texture>($"Tiles/Tunnel_{tile.Layer}_{tunnelName}");
+	}
+
+	static string GetTunnelName(bool left, bool right, bool up, bool down)
+	{
+		// 4-way
+		if (left && right && up && down) return "Cross";
+
+		// 3-way
+		if (left && right && down) return "T_0";
+		if (right && down && up) return "T_1";
+		if (left && right && up) return "T_2";
+		if (left && down && up) return "T_3";
+
+		// 2-way turn
+		if (right && down) return "Turn_0";
+		if (right && up) return "Turn_1";
+		if (left && up) return "Turn_2";
+		if (left && down) return "Turn_3";
+
+		// 2-way
+		if (left || right) return "Horizontal";
+		if (up || down) return "Vertical";
+
+		// default
+		return "Vertical";
 	}
 }

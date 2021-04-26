@@ -7,6 +7,7 @@ using UnityEngine;
 public class LevelGenerator : ScriptableObject
 {
 	public int Width = 15;
+	public int CloudsLimit = 3;
 	public int AtmosphereHeight = 5;
 	public int Soil1Height = 12;
 	public int Soil2Height = 8;
@@ -24,6 +25,8 @@ public class LevelGenerator : ScriptableObject
 	public AnimationCurve DepositProbabilityByHeight;
 	public AnimationCurve GraniteProbabilityByHeight;
 	public AnimationCurve MagmaProbabilityByHeight;
+
+	public bool BetterMineralsOn;
 	public AnimationCurve BetterMineralProbabilityByWidth;
 
 	public LevelData Generate()
@@ -36,8 +39,8 @@ public class LevelGenerator : ScriptableObject
 			Parent = this,
 		};
 
-		levelData.SoilVariants = GenerateSoilVariantsMatrix();
 		levelData.Tiles = GenerateTileTypeMatrix();
+		levelData.SoilVariants = GenerateSoilVariantsMatrix(levelData.Tiles);
 		return levelData;
 	}
 
@@ -77,21 +80,22 @@ public class LevelGenerator : ScriptableObject
 		}
 
 		// better mineral
-		for (int j = AtmosphereEndsAt; j < Soil3EndsAt; j++)
-		{
-			for (int i = 0; i < Width; i++)
+		if (BetterMineralsOn)
+			for (int j = AtmosphereEndsAt; j < Soil3EndsAt; j++)
 			{
-				if (tiles[i, j].TileType != TileType.Mineral) continue;
+				for (int i = 0; i < Width; i++)
+				{
+					if (tiles[i, j].TileType != TileType.Mineral) continue;
 
-				if (tiles[i, j].Layer == Layer.C) continue;
+					if (tiles[i, j].Layer == Layer.C) continue;
 
-				var x = 2f * i / (Width - 2) - 1;
-				var betterMineralProbability = BetterMineralProbabilityByWidth.Evaluate(x);
-				if (RandomnessProvider.GetFloat() > betterMineralProbability) continue;
+					var x = 2f * i / (Width - 2) - 1;
+					var betterMineralProbability = BetterMineralProbabilityByWidth.Evaluate(x);
+					if (RandomnessProvider.GetFloat() > betterMineralProbability) continue;
 
-				tiles[i, j].Layer++;
+					tiles[i, j].Layer++;
+				}
 			}
-		}
 
 		// core
 		for (int j = Soil3EndsAt; j < Height; j++)
@@ -102,13 +106,20 @@ public class LevelGenerator : ScriptableObject
 			}
 		}
 
+		// lander
+		var startPoint = TerraformingFacilityInitialPosition;
+		tiles[startPoint.x, startPoint.y] = tiles[startPoint.x, startPoint.y].WithFacility(FacilityType.TerraformingFacility);
+		tiles[startPoint.x, startPoint.y + 1] = tiles[startPoint.x, startPoint.y + 1].WithFacility(FacilityType.Tunnel);
+
 		return tiles;
 	}
 
 	private TileData GetDefaultTileForHeight(int j)
 	{
+		if (j < AtmosphereEndsAt - 1)
+			return new TileData(TileType.Surface, Layer.B);
 		if (j < AtmosphereEndsAt)
-			return new TileData(TileType.Atmosphere, Layer.Atmosphere);
+			return new TileData(TileType.Surface, Layer.A);
 		if (j < Soil1EndsAt)
 			return new TileData(TileType.Soil, Layer.A);
 		if (j < Soil2EndsAt)
@@ -161,11 +172,11 @@ public class LevelGenerator : ScriptableObject
 		return new TileData(TileType.Magma, Layer.C);
 	}
 
-	private int[,] GenerateSoilVariantsMatrix()
+	private int[,] GenerateSoilVariantsMatrix(TileData[,] tiles)
 	{
 		var variants = new int[Width, Height];
 
-		var variantPool = new int[]
+		var variantPoolSoil = new int[]
 		{
 			0, 0, 0, 0,
 			1, 1, 1, 1,
@@ -173,14 +184,65 @@ public class LevelGenerator : ScriptableObject
 			3
 		};
 
+		var variantPoolClouds = new int[]
+		{
+			0, 0, 0, 0,
+			1,
+			2
+		};
+
+		var variantPoolSky = new int[]
+		{
+			0
+		};
+
+		var variantPoolSurface = new int[]
+		{
+			0, 1
+		};
+
+		var variantPoolCore = new int[]
+		{
+			0, 1
+		};
+
 		for (int i = 0; i < Width; i++)
 			for (int j = 0; j < Height; j++)
 			{
-				for (int attempts = 0; attempts < 100; attempts++) //
+				var tileData = tiles[i, j];
+
+				// pick a deck of variants.
+				int[] variantPool = variantPoolSoil;
+				if (tileData.TileType == TileType.Surface && tileData.Layer == Layer.A)
 				{
-					var variant = variantPool[UnityEngine.Random.Range(0, variantPool.Length)];
-					if (i > 0 && variants[i - 1, j] == variant) continue; // prevent repeating to the left
-					if (j > 0 && variants[i, j - 1] == variant) continue; // prevent repeating to the up
+					variantPool = variantPoolSurface;
+				}
+				else if (tileData.TileType == TileType.Surface && j < CloudsLimit)
+				{
+					variantPool = variantPoolClouds;
+				}
+				else if (tileData.TileType == TileType.Surface)
+				{
+					variantPool = variantPoolSky;
+				}
+				else if (tileData.TileType == TileType.Core)
+				{
+					variantPool = variantPoolCore;
+				}
+
+				for (int attempts = 0; attempts < 100; attempts++) // sanity check
+				{
+					// choose index at random from the deck
+					var variantIndex = UnityEngine.Random.Range(0, variantPool.Length);
+					var variant = variantPool[variantIndex];
+
+					// prevent too much repeating if deck is large enough
+					if (variantPool == variantPoolSoil)
+					{
+						if (i > 0 && variants[i - 1, j] == variant) continue; // prevent repeating to the left
+						if (j > 0 && variants[i, j - 1] == variant) continue; // prevent repeating to the up
+					}
+
 					variants[i, j] = variant;
 					break;
 				}

@@ -30,7 +30,10 @@ public class GameSettings : ScriptableObject
 
     public FacilitySettings GetSettings(FacilityType type)
     {
-        foreach(var setting in FacilitySettings)
+        if (type == FacilityType.None)
+			return null;
+
+		foreach(var setting in FacilitySettings)
         {
             if (setting.FacilityType == type)
             {
@@ -38,7 +41,8 @@ public class GameSettings : ScriptableObject
             }
         }
 
-        return null;
+		Debug.LogError($"Missing settings for type: {type}");
+		return null;
     }
 
     static GameSettings instance;

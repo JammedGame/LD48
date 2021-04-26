@@ -33,6 +33,13 @@ MonoBehaviour:
   - TileType: 7
     Name: Core
   FacilitySettings:
-  - {fileID: 11400000, guid: a58a8502f7b19e14a9bb5be435574f5b, type: 2}
-  - {fileID: 11400000, guid: 577a7c0be950a5c4e91b249b2c4620bf, type: 2}
+  - {fileID: 11400000, guid: 0c0dfb2c4a0eda94b8a350ffe4c4e56e, type: 2}
+  - {fileID: 11400000, guid: ff685363a3fac5848b51f7677b3dbd03, type: 2}
+  - {fileID: 11400000, guid: d96b70c0fbd0b4c469f02e55baf4dc4d, type: 2}
+  - {fileID: 11400000, guid: ea66925d560615b46aef120d931f98f3, type: 2}
   - {fileID: 11400000, guid: d8728114e0a76a346baa2652086fee04, type: 2}
+  - {fileID: 11400000, guid: 8c050c8b0726b2b47abb6ffdb1852c53, type: 2}
+  - {fileID: 11400000, guid: 1b449a6ce97040749be7b6d4d9b36c41, type: 2}
+  - {fileID: 11400000, guid: 577a7c0be950a5c4e91b249b2c4620bf, type: 2}
+  - {fileID: 11400000, guid: 8e733e2216ae6674c96bd86c90ea8e06, type: 2}
+  - {fileID: 11400000, guid: a58a8502f7b19e14a9bb5be435574f5b, type: 2}

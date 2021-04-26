@@ -16,7 +16,17 @@ public class TileViewController
 
 	public void OnUpdate(PlayerAction action)
 	{
-		TileViews[action.X, action.Y].UpdateMaterial();
+		GetTileView(action.X - 1, action.Y)?.UpdateMaterial();
+		GetTileView(action.X + 1, action.Y)?.UpdateMaterial();
+		GetTileView(action.X, action.Y - 1)?.UpdateMaterial();
+		GetTileView(action.X, action.Y + 1)?.UpdateMaterial();
+		GetTileView(action.X, action.Y)?.UpdateMaterial();
+	}
+
+	public TileView GetTileView(int x, int y)
+	{
+		if (GameWorld.GetTile(x, y) == null) return null;
+		return TileViews[x, y];
 	}
 
 	private static TileView[,] SpawnTileViews(GameWorld gameWorld)

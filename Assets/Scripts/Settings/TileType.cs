@@ -4,7 +4,6 @@ using UnityEngine;
 public enum Layer
 {
 	Undefined = 0,
-	Atmosphere = 1,
 	A = 2,
 	B = 3,
 	C = 4,
@@ -15,7 +14,7 @@ public enum TileType
 	Undefined = 0,
 
 	// NATURAL
-	Atmosphere = 1,
+	Surface = 1,
 	Soil,
 	Mineral,
 	Deposit,
@@ -52,5 +51,11 @@ public struct TileData
 		TileType = tileType;
 		Layer = layer;
 		FacilityType = facilityType;
+	}
+
+	public TileData WithFacility(FacilityType facility)
+	{
+		var newTileType = TileType == TileType.Deposit ? TileType.Soil : TileType; // remove deposit
+		return new TileData(newTileType, Layer, facility);
 	}
 }

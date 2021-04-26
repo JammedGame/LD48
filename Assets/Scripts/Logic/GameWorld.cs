@@ -60,11 +60,12 @@ public class GameWorld
 
 	public bool ProcessAction(PlayerAction action)
 	{
-		if (!Validate(action))
+		if (!ValidateAction(action))
 			return false;
 
 		var tile = GetTile(action.X, action.Y);
-		if (tile.TileType == TileType.Deposit)
+
+		if (tile.ExtractSoilDeposits())
 		{
 			// todo: add deposit instant reward
 		}
@@ -80,21 +81,25 @@ public class GameWorld
 		return true;
 	}
 
-	public bool Validate(PlayerAction action)
+	public bool ValidateAction(PlayerAction action)
 	{
 		var tile = GetTile(action.X, action.Y);
 		if (tile == null)
 			return false;
 
-		if (tile.Layer == Layer.Atmosphere)
+		if (tile.TileType == TileType.Surface)
 			return false;
 		if (tile.TileType == TileType.Core)
 			return false;
 		if (tile.TileType == TileType.Granite)
 			return false;
+		if (tile.TileType == TileType.Magma)
+			return false;
 		if (tile.TileType == TileType.Mineral && action.Facility != FacilityType.MineralExtractor)
 			return false;
 		if (tile.HasFacility)
+			return false;
+		if (tile.CountNeighbourFacilities(FacilityType.Tunnel) == 0)
 			return false;
 
 		// todo: check if adjecent to tunnel

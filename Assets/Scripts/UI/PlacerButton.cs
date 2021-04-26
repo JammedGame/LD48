@@ -1,13 +1,23 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class PlacerButton : GameUIComponent,
 	IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-	public FacilityType Facility;
+	public TextMeshProUGUI Text;
+	public FacilityType Facility { get; private set; }
+	public FacilitySettings FacilitySettings { get; private set; }
+
+	public void Init(FacilityType facility)
+	{
+		Facility = facility;
+		FacilitySettings = GameSettings.Instance.GetSettings(facility);
+		Text.text = FacilitySettings.Name;
+	}
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{

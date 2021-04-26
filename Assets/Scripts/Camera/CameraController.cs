@@ -8,6 +8,7 @@ public class CameraController : BaseRaycaster,
 	// Serialized
 	public GameUIController UIController;
 	public GameController GameController;
+	public RectTransform UIRect;
 	public Camera Camera;
 	public int FogOfWarThreshold = 6;
 	public float PanSpeed = 20f;
@@ -23,8 +24,22 @@ public class CameraController : BaseRaycaster,
 	private float leftEdge;
 	private float topEdge;
 	private float bottomEdge;
-	private float topToBottom => topEdge - bottomEdge;
+	private float topToBottom => topEdge - bottomClamp;
 	private float rightToLeft => rightEdge - leftEdge;
+	private float bottomClamp
+	{
+		get
+		{
+			var fogOfWarLimit = GameController.ActiveGame.ReachedDepth + FogOfWarThreshold;
+			return Mathf.Max(this.bottomEdge, -fogOfWarLimit);
+		}
+	}
+
+	private float leftSideScreenSizeRelative => Screen.width / (float)Screen.height;
+	// chop off space for ui
+	private float rightSideScreenSizeRelative => (UIRect.rect.width / UIRect.rect.height) * (UIRect.rect.width / UIRect.rect.height) / leftSideScreenSizeRelative;
+	private float totalAspectRatio => (rightSideScreenSizeRelative + leftSideScreenSizeRelative) / 2;
+
 	public override Camera eventCamera => Camera;
 
 	public void Initialize(LevelData levelData)
@@ -89,13 +104,11 @@ public class CameraController : BaseRaycaster,
 		if (currentZoom > ZoomMax) currentZoom = ZoomMax;
 
 		// clamp to screen bounds
-		var aspectRatio = Screen.width / (float)Screen.height;
-
 		var cameraSizeVertical = currentZoom * 2;
-		var cameraSizeHorizontal = currentZoom * aspectRatio * 2;
+		var cameraSizeHorizontal = currentZoom * leftSideScreenSizeRelative * 2;
 
 		if (cameraSizeVertical > topToBottom) { currentZoom = topToBottom / 2; }
-		if (cameraSizeHorizontal > rightToLeft) { currentZoom = rightToLeft / aspectRatio / 2; }
+		if (cameraSizeHorizontal > rightToLeft) { currentZoom = rightToLeft / leftSideScreenSizeRelative / 2; }
 
 		Camera.orthographicSize = currentZoom;
 	}
@@ -122,25 +135,21 @@ public class CameraController : BaseRaycaster,
 	private void ClampXY(ref Vector3 pos)
 	{
 		var cameraSizeVertical = Camera.orthographicSize;
-		var cameraSizeHorizontal = cameraSizeVertical * (Screen.width / (float)Screen.height);
+		var cameraSizeHorizontal = cameraSizeVertical * totalAspectRatio;
 
 		if (rightEdge - leftEdge > cameraSizeHorizontal * 2)
 		{
 			pos.x = Mathf.Clamp
 			(
 				pos.x,
-				this.leftEdge + cameraSizeHorizontal,
-				this.rightEdge - cameraSizeHorizontal
+				this.leftEdge + cameraSizeVertical * leftSideScreenSizeRelative,
+				this.rightEdge - cameraSizeVertical * rightSideScreenSizeRelative
 			);
 		}
 		else
 		{
 			pos.x = (rightEdge + leftEdge) / 2f;
 		}
-
-		// bottom clamp = special "fog of war condition"
-		var fogOfWarLimit = GameController.ActiveGame.ReachedDepth + FogOfWarThreshold;
-		var bottomClamp = Mathf.Max(this.bottomEdge, -fogOfWarLimit);
 
 		if (topEdge - bottomClamp > cameraSizeVertical * 2)
 		{
