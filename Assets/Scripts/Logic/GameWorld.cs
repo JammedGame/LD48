@@ -104,9 +104,9 @@ public class GameWorld
 			return false;
 		if (tile.TileType != TileType.Mineral && action.Facility == FacilityType.MineralExtractor)
 			return false;
-		if (tile.TileType == TileType.Magma && action.Facility != FacilityType.GeothermalPlant)
+		if (tile.TileType == TileType.Magma && action.Facility != FacilityType.GeothermalPowerPlant)
 			return false;
-		if (tile.TileType != TileType.Magma && action.Facility == FacilityType.GeothermalPlant)
+		if (tile.TileType != TileType.Magma && action.Facility == FacilityType.GeothermalPowerPlant)
 			return false;
 		if (tile.HasFacility)
 			return false;

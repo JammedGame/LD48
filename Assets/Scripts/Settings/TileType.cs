@@ -33,9 +33,9 @@ public enum FacilityType
 	MineralExtractor,
 	PowerPlant,
 	Battery,
-	GeothermalPlant,
+	GeothermalPowerPlant,
 	Booster,
-	NuclearPlant,
+	NuclearPowerPlant,
 	BuildBotFacility,
 	BFCoreExtractor,
 }

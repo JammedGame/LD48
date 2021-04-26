@@ -11,9 +11,9 @@ public class PlacerButtonList : GameUIComponent
 		FacilityType.MineralExtractor,
 		FacilityType.PowerPlant,
 		FacilityType.Battery,
-		FacilityType.GeothermalPlant,
+		FacilityType.GeothermalPowerPlant,
 		FacilityType.Booster,
-		FacilityType.NuclearPlant,
+		FacilityType.NuclearPowerPlant,
 		FacilityType.BuildBotFacility,
 		FacilityType.BFCoreExtractor,
 	};
