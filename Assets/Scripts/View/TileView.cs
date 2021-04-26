@@ -107,6 +107,15 @@ public class TileView : MonoBehaviour
 			return LoadTunnelTexture(tile);
 		}
 
+		if (tile.FacilityType == FacilityType.TerraformingFacility && tile.TileType == TileType.Soil)
+		{
+			return Resources.Load<Texture>($"Tiles/{tile.FacilityType}_0");
+		}
+		if (tile.FacilityType == FacilityType.TerraformingFacility && tile.TileType == TileType.Surface)
+		{
+			return Resources.Load<Texture>($"Tiles/{tile.FacilityType}_1");
+		}
+
 		//todo: other facilities.
 		var result = Resources.Load<Texture>($"Tiles/{tile.FacilityType}_{tile.Layer}_0");
 		return result;

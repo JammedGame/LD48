@@ -12,7 +12,7 @@ public class Tile
 	public TileType TileType { get; private set; }
 	public FacilityType FacilityType { get; private set; }
 	public bool HasFacility => FacilityType != FacilityType.None;
-	public bool IsTunnel => FacilityType == FacilityType.Tunnel;
+	public bool IsTunnel => FacilityType == FacilityType.Tunnel || FacilityType == FacilityType.TerraformingFacility;
 
 	public Tile(GameWorld world, int x, int y, TileData tileData, int soilVariant)
 	{
@@ -34,22 +34,12 @@ public class Tile
 		return tile != null ? tile.FacilityType : FacilityType.None;
 	}
 
-	public int CountNeighbourFacilities(FacilityType type)
-	{
-		int count = 0;
-		if (GetAdjecentFacility(Direction.Left) == type) count++;
-		if (GetAdjecentFacility(Direction.Top) == type) count++;
-		if (GetAdjecentFacility(Direction.Right) == type) count++;
-		if (GetAdjecentFacility(Direction.Bottom) == type) count++;
-		return count;
-	}
-
 	public Direction? GetFirstNeighbourTunnel()
 	{
-		if (GetAdjecentFacility(Direction.Left) == FacilityType.Tunnel) return Direction.Left;
-		if (GetAdjecentFacility(Direction.Top) == FacilityType.Tunnel) return Direction.Top;
-		if (GetAdjecentFacility(Direction.Right) == FacilityType.Tunnel) return Direction.Right;
-		if (GetAdjecentFacility(Direction.Bottom) == FacilityType.Tunnel) return Direction.Bottom;
+		if (HasAdjecentTunnel(Direction.Left)) return Direction.Left;
+		if (HasAdjecentTunnel(Direction.Top)) return Direction.Top;
+		if (HasAdjecentTunnel(Direction.Right)) return Direction.Right;
+		if (HasAdjecentTunnel(Direction.Bottom)) return Direction.Bottom;
 		return null;
 	}
 

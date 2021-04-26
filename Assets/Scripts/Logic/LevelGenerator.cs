@@ -111,7 +111,7 @@ public class LevelGenerator : ScriptableObject
 		tiles[startPoint.x, startPoint.y] = tiles[startPoint.x, startPoint.y]
 			.WithFacility(FacilityType.TerraformingFacility, TileType.Surface);
 		tiles[startPoint.x, startPoint.y + 1] = tiles[startPoint.x, startPoint.y + 1]
-			.WithFacility(FacilityType.Tunnel, TileType.Soil);
+			.WithFacility(FacilityType.TerraformingFacility, TileType.Soil);
 
 		return tiles;
 	}
