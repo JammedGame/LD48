@@ -111,6 +111,22 @@ public enum Direction
 	Bottom = 4
 }
 
+public static class DirectionUtil
+{
+	public static Direction GetOpposite(this Direction dir)
+	{
+		switch(dir)
+		{
+			case Direction.Left: return Direction.Right;
+			case Direction.Right: return Direction.Left;
+			case Direction.Top: return Direction.Bottom;
+			case Direction.Bottom: return Direction.Top;
+			default:
+				throw new Exception("Wrong dir");
+		}
+	}
+}
+
 public struct DirectionMask
 {
 	public bool Left;
@@ -129,5 +145,16 @@ public struct DirectionMask
 		}
 
 		return false;
+	}
+
+	public void Set(Direction dir, bool value = true)
+	{
+		switch (dir)
+		{
+			case Direction.Left: Left = value; return;
+			case Direction.Top: Top = value; return;
+			case Direction.Right: Right = value; return;
+			case Direction.Bottom: Bottom = value; return;
+		}
 	}
 }

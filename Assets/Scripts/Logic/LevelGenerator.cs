@@ -188,7 +188,7 @@ public class LevelGenerator : ScriptableObject
 
 		var variantPoolClouds = new int[]
 		{
-			0, 0, 0, 0,
+			0, 0, 0, 0, 0, 0, 0, 0, 0,
 			1,
 			2
 		};

@@ -60,7 +60,7 @@ public class GameWorld
 
 	public bool ProcessAction(PlayerAction action)
 	{
-		if (!ValidateAction(action))
+		if (!ValidateAction(action, out Direction placingDirection))
 			return false;
 
 		var tile = GetTile(action.X, action.Y);
@@ -73,7 +73,7 @@ public class GameWorld
 		// todo: spend currencies.
 
 		// change tileboard
-		tiles[action.X, action.Y].SetTile(action.Facility);
+		tiles[action.X, action.Y].SetFacility(action.Facility, placingDirection);
 		ReachedDepth = Mathf.Max(action.Y, ReachedDepth);
 
 		ProcessTurn();
@@ -81,8 +81,10 @@ public class GameWorld
 		return true;
 	}
 
-	public bool ValidateAction(PlayerAction action)
+	public bool ValidateAction(PlayerAction action, out Direction placingDirection)
 	{
+		placingDirection = default;
+
 		var tile = GetTile(action.X, action.Y);
 		if (tile == null)
 			return false;
@@ -99,15 +101,18 @@ public class GameWorld
 			return false;
 		if (tile.HasFacility)
 			return false;
-		if (tile.CountNeighbourFacilities(FacilityType.Tunnel) == 0)
-			return false;
 
-		// todo: check if adjecent to tunnel
 		// todo: validate price against wallet
 		// todo: validate tech tree
 		// todo: validate special tile conditions
 
-		return true;
+		if (tile.GetFirstNeighbourTunnel() is Direction tunnelConnectionDirection)
+		{
+			placingDirection = tunnelConnectionDirection;
+			return true;
+		}
+
+		return false;
 	}
 
 	public void ProcessTurn()

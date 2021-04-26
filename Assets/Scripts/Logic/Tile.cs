@@ -8,7 +8,7 @@ public class Tile
 	public readonly int X, Y;
 	public readonly int SoilVariant;
 	public readonly Layer Layer;
-	public DirectionMask Connections;
+	public Direction placementDirection; // active connections - determine visuals for tunnels and connectors.
 	public TileType TileType { get; private set; }
 	public FacilityType FacilityType { get; private set; }
 	public bool HasFacility => FacilityType != FacilityType.None;
@@ -43,6 +43,14 @@ public class Tile
 		return count;
 	}
 
+	public Direction? GetFirstNeighbourTunnel()
+	{
+		if (GetAdjecentFacility(Direction.Left) == FacilityType.Tunnel) return Direction.Left;
+		if (GetAdjecentFacility(Direction.Top) == FacilityType.Tunnel) return Direction.Top;
+		if (GetAdjecentFacility(Direction.Right) == FacilityType.Tunnel) return Direction.Right;
+		if (GetAdjecentFacility(Direction.Bottom) == FacilityType.Tunnel) return Direction.Bottom;
+		return null;
+	}
 
 	public Tile GetAdjecentTile(Direction direction)
 	{
@@ -72,8 +80,9 @@ public class Tile
 		return false;
 	}
 
-	public void SetTile(FacilityType facility)
+	public void SetFacility(FacilityType facility, Direction from)
 	{
 		FacilityType = facility;
+		placementDirection = from;
 	}
 }
