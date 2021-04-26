@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FacilityType: 102
   Name: TUNNEL
-  Description: "Main building block for expanding your underground base. Used to
-    connect facilities with the top, as well collecting smaller pockets of Minerals\U0001F48E
-    [mineral]. All facilities are required to be placed adjacent to a Tunnel. Its
-    cost depends on the type of soil - it gets more expensive closer to the core.\r\n"
+  Description: "Used to connect facilities to the base - all facilities must be placed
+    next to a Tunnel. \nIts cost depends on the type of soil - it gets more expensive
+    closer to the core.\r\n"
   MineralPrice:
     FlatPrice: 0
     DependsOnSoil: 1

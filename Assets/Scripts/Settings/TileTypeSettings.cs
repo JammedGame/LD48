@@ -50,6 +50,25 @@ public class EnergyContribution
 	public int ContributionLayer0;
 	public int ContributionLayer1;
 	public int ContributionLayer2;
+
+	public override string ToString()
+	{
+		if (ContributionLayer0 > 999)
+		{
+			return "Produces enough energy to Terraform the planet!";
+		}
+
+		if (ContributionLayer0 > 0)
+		{
+			return ContributionLayer0 != ContributionLayer1 || ContributionLayer1 != ContributionLayer2 || ContributionLayer0 != ContributionLayer2
+				? $"Produces {ContributionLayer0} / {ContributionLayer1} / {ContributionLayer2} Energy per turn"
+				: $"Produces {ContributionLayer0} Energy per turn";
+		}
+
+		return ContributionLayer0 != ContributionLayer1 || ContributionLayer1 != ContributionLayer2 || ContributionLayer0 != ContributionLayer2
+			? $"Upkeep: {ContributionLayer0} / {ContributionLayer1} / {ContributionLayer2} Energy per turn"
+			: $"Upkeep: {ContributionLayer0} Energy per turn";
+	}
 }
 
 [Serializable]
