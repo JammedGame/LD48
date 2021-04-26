@@ -91,15 +91,7 @@ public class MineralProduction
 [Serializable]
 public class Requirements
 {
-	public TileType[] GlobalFacilityRequirements;
-	public TileType[] AdjacentTileRequirements;
-
-	public bool AreMet(TileType[] allFacilities, TileType[] adjacentTiles)
-	{
-		var globalMet = GlobalFacilityRequirements.Except(allFacilities).Count() == 0;
-		var adjacentMet = AdjacentTileRequirements.Except(adjacentTiles).Count() == 0;
-		return globalMet && adjacentMet;
-	}
+	public FacilityType RequirementToUnlock;
 }
 
 public enum Direction

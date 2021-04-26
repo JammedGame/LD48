@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: Nuclear Plant
   Description: 
   MineralPrice:
-    FlatPrice: 0
+    FlatPrice: 500
     DependsOnSoil: 1
     Soil1Price: 10
     Soil2Price: 25
@@ -35,5 +35,4 @@ MonoBehaviour:
     AdjacentFacilitiesBoost: 0
     ConstructionTimeReductionGlobal: 0
   Requirements:
-    GlobalFacilityRequirements: 
-    AdjacentTileRequirements: 
+    RequirementToUnlock: 0

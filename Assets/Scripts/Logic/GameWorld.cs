@@ -6,6 +6,7 @@ public class GameWorld
 {
 	public readonly LevelData LevelData;
 	private readonly Tile[,] tiles;
+	private readonly HashSet<FacilityType> builtFacilities = new HashSet<FacilityType>();
 
 	// player's wallet
 	public int Minerals { get; private set; }
@@ -75,6 +76,7 @@ public class GameWorld
 		// change tileboard
 		tiles[action.X, action.Y].SetFacility(action.Facility, placingDirection);
 		ReachedDepth = Mathf.Max(action.Y, ReachedDepth);
+		builtFacilities.Add(action.Facility);
 
 		ProcessTurn();
 		OnTurnOver?.Invoke(action);
@@ -84,6 +86,9 @@ public class GameWorld
 	public bool ValidateAction(PlayerAction action, out Direction placingDirection)
 	{
 		placingDirection = default;
+
+		if (action.Facility == FacilityType.None)
+			return false;
 
 		var tile = GetTile(action.X, action.Y);
 		if (tile == null)
@@ -105,6 +110,8 @@ public class GameWorld
 			return false;
 		if (tile.HasFacility)
 			return false;
+		if (!IsFacilityTypeUnlocked(action.Facility))
+			return false;
 
 		// todo: validate price against wallet
 		// todo: validate tech tree
@@ -117,6 +124,17 @@ public class GameWorld
 		}
 
 		return false;
+	}
+
+	public bool IsFacilityTypeUnlocked(FacilityType facilityType)
+	{
+		var facilitySettings = GameSettings.Instance.GetSettings(facilityType);
+		if (facilitySettings == null)
+			return false;
+		if (facilitySettings.Requirements.RequirementToUnlock == FacilityType.None)
+			return true;
+
+		return builtFacilities.Contains(facilitySettings.Requirements.RequirementToUnlock);
 	}
 
 	public void ProcessTurn()
