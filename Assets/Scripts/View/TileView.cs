@@ -116,6 +116,11 @@ public class TileView : MonoBehaviour
 			return Resources.Load<Texture>($"Tiles/{tile.FacilityType}_1");
 		}
 
+		if (tile.FacilityType == FacilityType.BFCoreExtractor)
+		{
+			return Resources.Load<Texture>($"Tiles/{tile.FacilityType}");
+		}
+
 		//todo: other facilities.
 		var result = Resources.Load<Texture>($"Tiles/{tile.FacilityType}_{tile.Layer}_0");
 		return result;
