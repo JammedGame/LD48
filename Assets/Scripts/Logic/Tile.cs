@@ -54,6 +54,24 @@ public class Tile
 		}
 	}
 
+	public int CountAdjecent(FacilityType facility)
+	{
+		int count = 0;
+		Tile tile = null;
+
+		tile = World.GetTile(X - 1, Y - 1); if (tile != null && tile.FacilityType == facility) count++;
+		tile = World.GetTile(X - 1, Y); if (tile != null && tile.FacilityType == facility) count++;
+		tile = World.GetTile(X - 1, Y + 1); if (tile != null && tile.FacilityType == facility) count++;
+
+		tile = World.GetTile(X, Y - 1); if (tile != null && tile.FacilityType == facility) count++;
+		tile = World.GetTile(X, Y + 1); if (tile != null && tile.FacilityType == facility) count++;
+
+		tile = World.GetTile(X + 1, Y - 1); if (tile != null && tile.FacilityType == facility) count++;
+		tile = World.GetTile(X + 1, Y); if (tile != null && tile.FacilityType == facility) count++;
+		tile = World.GetTile(X + 1, Y + 1); if (tile != null && tile.FacilityType == facility) count++;
+		return count;
+	}
+
 	public bool HasAdjecentTunnel(Direction direction) => GetAdjecentTile(direction) is Tile tile && tile.IsTunnel;
 
 	public override string ToString()
@@ -95,7 +113,12 @@ public class Tile
 		if (settings == null)
 			return 0;
 
-		return settings.EnergyContribution.Get(Layer);
+		var production = (float)settings.EnergyContribution.Get(Layer);
+
+		const float batteryBonus = 0.25f;
+		var adjecentBatteries = CountAdjecent(FacilityType.Battery);
+		production *= (1f + adjecentBatteries * batteryBonus);
+		return Mathf.CeilToInt(production);
 	}
 
 	public int GetMineralProduction()
@@ -107,6 +130,10 @@ public class Tile
 		if (settings == null)
 			return 0;
 
-		return settings.Production.MineralProduction.GetProduction(Layer);
+		var production = (float)settings.Production.MineralProduction.GetProduction(Layer);
+		var adjecentBatteries = CountAdjecent(FacilityType.Booster);
+		const float boosterBonus = 0.75f;
+		production *= (1f + adjecentBatteries * boosterBonus);
+		return Mathf.CeilToInt(production);
 	}
 }

@@ -19,10 +19,10 @@ MonoBehaviour:
     [mineral] tile.\r\n"
   BuildPointsCost: 1
   MineralPrice:
-    FlatPrice: 0
-    DependsOnSoil: 1
+    FlatPrice: 100
+    DependsOnSoil: 0
     Soil1Price: 100
-    Soil2Price: 250
+    Soil2Price: 100
     Soil3Price: 750
   EnergyContribution:
     EnergyCap: 0
@@ -33,7 +33,7 @@ MonoBehaviour:
     MineralProduction:
       FlatProduction: 0
       DependsOnSoil: 1
-      Soil1Production: 20
+      Soil1Production: 25
       Soil2Production: 50
       Soil3Production: 100
     AdjacentFacilitiesBoost: 0

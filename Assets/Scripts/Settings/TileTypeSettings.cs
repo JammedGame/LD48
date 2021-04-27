@@ -70,6 +70,9 @@ public class EnergyContribution
 			return "Produces enough energy to Terraform the planet!";
 		}
 
+		if (ContributionLayer0 == 0 && EnergyCap > 0)
+			return $"Energy Storage: {EnergyCap}";
+
 		if (ContributionLayer0 > 0)
 		{
 			return ContributionLayer0 != ContributionLayer1 || ContributionLayer1 != ContributionLayer2 || ContributionLayer0 != ContributionLayer2
