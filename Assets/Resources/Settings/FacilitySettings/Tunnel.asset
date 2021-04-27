@@ -24,9 +24,10 @@ MonoBehaviour:
     Soil2Price: 25
     Soil3Price: 100
   EnergyContribution:
-    ContributionLayer0: 0
-    ContributionLayer1: 0
-    ContributionLayer2: 0
+    EnergyCap: 0
+    ContributionLayer0: -1
+    ContributionLayer1: -2
+    ContributionLayer2: -3
   Production:
     MineralProduction:
       FlatProduction: 0

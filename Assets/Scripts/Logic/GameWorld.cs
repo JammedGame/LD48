@@ -8,6 +8,7 @@ public class GameWorld
 	public readonly LevelData LevelData;
 	private readonly Tile[,] tiles;
 	private readonly HashSet<FacilityType> builtFacilities = new HashSet<FacilityType>();
+	private readonly List<Tile> tilesWithFacilities = new List<Tile>();
 
 	// player's wallet
 	public int Minerals { get; private set; }
@@ -15,6 +16,7 @@ public class GameWorld
 	public int EnergyCap { get; private set; }
 	public int ReachedDepth { get; private set; }
 	public int CurrentTurn { get; private set; } = 1;
+
 
 	public event Action<PlayerAction> OnTurnOver;
 
@@ -88,6 +90,32 @@ public class GameWorld
 		return true;
 	}
 
+	internal void OnFacilityAdded(Tile tile)
+	{
+		tilesWithFacilities.Add(tile);
+	}
+
+	internal void OnFacilityRemoved(Tile tile)
+	{
+		tilesWithFacilities.Remove(tile);
+	}
+
+	public int EnergyPerTurn()
+	{
+		int energyPerTurn = 0;
+		foreach(var tile in tilesWithFacilities)
+			energyPerTurn += tile.GetEnergyProduction();
+		return energyPerTurn;
+	}
+
+	public int MineralsPerTurn()
+	{
+		int perTurn = 0;
+		foreach(var tile in tilesWithFacilities)
+			perTurn += tile.GetMineralProduction();
+		return perTurn;
+	}
+
 	public bool ValidateAction(PlayerAction action)
 	{
 		if (action.Facility == FacilityType.None)
@@ -150,14 +178,14 @@ public class GameWorld
 
 	public void ProcessTurn()
 	{
-		foreach(var tile in tiles)
+		foreach(var tile in tilesWithFacilities)
 		{
-			if (tile.FacilityType != FacilityType.None)
-			{
-				var settings = GameSettings.Instance.GetSettings(tile.FacilityType);
-				Energy += settings.EnergyContribution.Get(tile.Layer);
-				Minerals += settings.Production.MineralProduction.GetProduction(tile.Layer);
-			}
+			var settings = GameSettings.Instance.GetSettings(tile.FacilityType);
+			if (settings == null)
+				continue;
+
+			Energy += settings.EnergyContribution.Get(tile.Layer);
+			Minerals += settings.Production.MineralProduction.GetProduction(tile.Layer);
 		}
 
 		if (Energy > EnergyCap)

@@ -19,13 +19,13 @@ public class Tile
 		TileType = tileData.TileType;
 		Layer = tileData.Layer;
 		SoilVariant = soilVariant;
-		FacilityType = tileData.FacilityType;
+		SetFacility(tileData.FacilityType);
 		X = x;
 		Y = y;
 	}
 
 	private TileTypeSettings tileTypeSettings => GameSettings.Instance.GetSettings(TileType);
-	private FacilitySettings facilitySettings => GameSettings.Instance.GetSettings(FacilityType);
+	private FacilitySettings GetFacilitySettings() => GameSettings.Instance.GetSettings(FacilityType);
 
 	public FacilityType GetAdjecentFacility(Direction direction)
 	{
@@ -74,6 +74,39 @@ public class Tile
 
 	public void SetFacility(FacilityType facility)
 	{
+		if (facility == FacilityType.None)
+		{
+			World.OnFacilityRemoved(this);
+		}
+		else
+		{
+			World.OnFacilityAdded(this);
+		}
+
 		FacilityType = facility;
+	}
+
+	public int GetEnergyProduction()
+	{
+		if (FacilityType == FacilityType.None)
+			return 0;
+
+		var settings = GetFacilitySettings();
+		if (settings == null)
+			return 0;
+
+		return settings.EnergyContribution.Get(Layer);
+	}
+
+	public int GetMineralProduction()
+	{
+		if (FacilityType == FacilityType.None)
+			return 0;
+
+		var settings = GetFacilitySettings();
+		if (settings == null)
+			return 0;
+
+		return settings.Production.MineralProduction.GetProduction(Layer);
 	}
 }

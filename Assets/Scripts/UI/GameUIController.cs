@@ -20,10 +20,12 @@ public class GameUIController : MonoBehaviour
 	public string EnergyFormat;
 	public TextMeshProUGUI Minerals;
 	public TextMeshProUGUI Energy;
+	public TextMeshProUGUI Turn;
 
 	private float lastMinerals = 0;
 	private float lastEnergy = 0;
 	private float lastEnergyCap = 0;
+	private int lastTurn = 0;
 
 	public void Initialize(GameController game)
 	{
@@ -56,21 +58,38 @@ public class GameUIController : MonoBehaviour
 
 		if (lastMinerals != GameWorld.Minerals)
 		{
+			string mineralsPerTurn = ChangeString(GameWorld.MineralsPerTurn());
 			lastMinerals = Mathf.Lerp(lastMinerals, GameWorld.Minerals, Time.deltaTime * 5f);
 			lastMinerals = Mathf.MoveTowards(lastMinerals, GameWorld.Minerals, Time.deltaTime * 10);
 
-			Minerals.text = string.Format(MineralsFormat, Mathf.RoundToInt(lastMinerals));
+			Minerals.text = string.Format(MineralsFormat, Mathf.RoundToInt(lastMinerals)) + mineralsPerTurn;
 		}
 
 		if (lastEnergy != GameWorld.Energy || lastEnergyCap != GameWorld.EnergyCap)
 		{
+			string energyPerTurnText = ChangeString(GameWorld.EnergyPerTurn());
+
 			lastEnergy = Mathf.Lerp(lastEnergy, GameWorld.Energy, Time.deltaTime * 5f);
 			lastEnergy = Mathf.MoveTowards(lastEnergy, GameWorld.Energy, Time.deltaTime * 10);
 
 			lastEnergyCap = Mathf.Lerp(lastEnergyCap, GameWorld.EnergyCap, Time.deltaTime * 5f);
 			lastEnergyCap = Mathf.MoveTowards(lastEnergyCap, GameWorld.EnergyCap, Time.deltaTime * 10);
 
-			Energy.text = string.Format(EnergyFormat, Mathf.RoundToInt(lastEnergy), Mathf.RoundToInt(lastEnergyCap));
+			Energy.text = string.Format(EnergyFormat, Mathf.RoundToInt(lastEnergy), Mathf.RoundToInt(lastEnergyCap)) + energyPerTurnText;
 		}
+
+		if (lastTurn != GameWorld.CurrentTurn)
+		{
+			lastTurn = GameWorld.CurrentTurn;
+			Turn.text = $"TURN: {GameWorld.CurrentTurn}";
+		}
+	}
+
+	private static string ChangeString(int value)
+	{
+		if (value == 0) return "";
+		return value > 0
+			? $" (+{value})"
+			: $" ({value})";
 	}
 }
