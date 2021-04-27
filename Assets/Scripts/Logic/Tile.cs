@@ -8,7 +8,6 @@ public class Tile
 	public readonly int X, Y;
 	public readonly int SoilVariant;
 	public readonly Layer Layer;
-	public Direction placementDirection; // active connections - determine visuals for tunnels and connectors.
 	public TileType TileType { get; private set; }
 	public FacilityType FacilityType { get; private set; }
 	public bool HasFacility => FacilityType != FacilityType.None;
@@ -73,9 +72,8 @@ public class Tile
 		return false;
 	}
 
-	public void SetFacility(FacilityType facility, Direction from)
+	public void SetFacility(FacilityType facility)
 	{
 		FacilityType = facility;
-		placementDirection = from;
 	}
 }

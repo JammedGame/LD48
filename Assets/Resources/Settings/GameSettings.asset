@@ -15,6 +15,10 @@ MonoBehaviour:
   InitialMinerals: 100
   InitialEnergy: 100
   InitialEnergyCap: 100
+  DepositReward:
+    A: 30
+    B: 100
+    C: 250
   SettingsPerType:
   - TileType: 0
     Name: Undefined

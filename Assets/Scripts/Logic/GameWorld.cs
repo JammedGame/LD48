@@ -63,20 +63,22 @@ public class GameWorld
 
 	public bool ProcessAction(PlayerAction action)
 	{
-		if (!ValidateAction(action, out Direction placingDirection))
+		if (!ValidateAction(action))
 			return false;
 
 		var tile = GetTile(action.X, action.Y);
+		var facilitySettings = GameSettings.Instance.GetSettings(action.Facility);
 
 		if (tile.ExtractSoilDeposits())
 		{
 			Minerals += GameSettings.Instance.DepositReward.Get(tile.Layer);
 		}
 
-		// todo: spend currencies.
+		var price = facilitySettings.MineralPrice.GetPrice(tile.Layer);
+		Minerals -= price;
 
 		// change tileboard
-		tiles[action.X, action.Y].SetFacility(action.Facility, placingDirection);
+		tiles[action.X, action.Y].SetFacility(action.Facility);
 		ReachedDepth = Mathf.Max(action.Y, ReachedDepth);
 		builtFacilities.Add(action.Facility);
 
@@ -85,12 +87,11 @@ public class GameWorld
 		return true;
 	}
 
-	public bool ValidateAction(PlayerAction action, out Direction placingDirection)
+	public bool ValidateAction(PlayerAction action)
 	{
-		placingDirection = default;
-
 		if (action.Facility == FacilityType.None)
 			return false;
+
 		var facilitySettings = GameSettings.Instance.GetSettings(action.Facility);
 		if (facilitySettings == null)
 			return false;
@@ -129,7 +130,6 @@ public class GameWorld
 
 		if (tile.GetFirstNeighbourTunnel() is Direction tunnelConnectionDirection)
 		{
-			placingDirection = tunnelConnectionDirection;
 			return true;
 		}
 
