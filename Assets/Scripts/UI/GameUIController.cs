@@ -56,7 +56,7 @@ public class GameUIController : MonoBehaviour
 
 		if (lastMinerals != GameWorld.Minerals)
 		{
-			lastMinerals = Mathf.Lerp(lastMinerals, GameWorld.Minerals, Time.deltaTime * 2f);
+			lastMinerals = Mathf.Lerp(lastMinerals, GameWorld.Minerals, Time.deltaTime * 5f);
 			lastMinerals = Mathf.MoveTowards(lastMinerals, GameWorld.Minerals, Time.deltaTime * 10);
 
 			Minerals.text = string.Format(MineralsFormat, Mathf.RoundToInt(lastMinerals));
@@ -64,10 +64,10 @@ public class GameUIController : MonoBehaviour
 
 		if (lastEnergy != GameWorld.Energy || lastEnergyCap != GameWorld.EnergyCap)
 		{
-			lastEnergy = Mathf.Lerp(lastEnergy, GameWorld.Energy, Time.deltaTime * 2f);
+			lastEnergy = Mathf.Lerp(lastEnergy, GameWorld.Energy, Time.deltaTime * 5f);
 			lastEnergy = Mathf.MoveTowards(lastEnergy, GameWorld.Energy, Time.deltaTime * 10);
 
-			lastEnergyCap = Mathf.Lerp(lastEnergyCap, GameWorld.EnergyCap, Time.deltaTime * 2f);
+			lastEnergyCap = Mathf.Lerp(lastEnergyCap, GameWorld.EnergyCap, Time.deltaTime * 5f);
 			lastEnergyCap = Mathf.MoveTowards(lastEnergyCap, GameWorld.EnergyCap, Time.deltaTime * 10);
 
 			Energy.text = string.Format(EnergyFormat, Mathf.RoundToInt(lastMinerals), Mathf.RoundToInt(lastMinerals));

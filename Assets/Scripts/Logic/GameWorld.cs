@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class GameWorld
@@ -13,6 +14,7 @@ public class GameWorld
 	public int Energy { get; private set; }
 	public int EnergyCap { get; private set; }
 	public int ReachedDepth { get; private set; }
+	public int CurrentTurn { get; private set; } = 1;
 
 	public event Action<PlayerAction> OnTurnOver;
 
@@ -68,7 +70,7 @@ public class GameWorld
 
 		if (tile.ExtractSoilDeposits())
 		{
-			// todo: add deposit instant reward
+			Minerals += GameSettings.Instance.DepositReward.Get(tile.Layer);
 		}
 
 		// todo: spend currencies.
@@ -88,6 +90,9 @@ public class GameWorld
 		placingDirection = default;
 
 		if (action.Facility == FacilityType.None)
+			return false;
+		var facilitySettings = GameSettings.Instance.GetSettings(action.Facility);
+		if (facilitySettings == null)
 			return false;
 
 		var tile = GetTile(action.X, action.Y);
@@ -119,9 +124,8 @@ public class GameWorld
 		if (!IsFacilityTypeUnlocked(action.Facility))
 			return false;
 
-		// todo: validate price against wallet
-		// todo: validate tech tree
-		// todo: validate special tile conditions
+		if (Minerals < facilitySettings.MineralPrice.GetPrice(tile.Layer))
+			return false;
 
 		if (tile.GetFirstNeighbourTunnel() is Direction tunnelConnectionDirection)
 		{
@@ -145,10 +149,22 @@ public class GameWorld
 
 	public void ProcessTurn()
 	{
+		foreach(var tile in tiles)
+		{
+			if (tile.FacilityType != FacilityType.None)
+			{
+				var settings = GameSettings.Instance.GetSettings(tile.FacilityType);
+
+
+			}
+		}
+
 		// todo: spend energy
 		// todo: gain minerals
 		// todo: gain energy
 		// todo: cap energy
+
+		CurrentTurn++;
 	}
 }
 

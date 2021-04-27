@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class GameSettings : ScriptableObject
 	public int InitialMinerals;
 	public int InitialEnergy;
 	public int InitialEnergyCap;
+	public ValuePerLayer DepositReward;
 
 	[Header("Tile Settings")]
     public List<TileTypeSettings> SettingsPerType;
@@ -85,5 +87,22 @@ public class GameSettings : ScriptableObject
 
             SettingsPerType.Sort((a, b) => a.TileType.CompareTo(b.TileType));
         }
+    }
+}
+
+[Serializable]
+public struct ValuePerLayer
+{
+	public int A, B, C;
+
+    public int Get(Layer l)
+    {
+        switch(l)
+        {
+            case Layer.A: return A;
+            case Layer.B: return A;
+            case Layer.C: return C;
+			default: return 0;
+		}
     }
 }

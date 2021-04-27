@@ -51,6 +51,17 @@ public class EnergyContribution
 	public int ContributionLayer1;
 	public int ContributionLayer2;
 
+	public int Get(Layer layer)
+	{
+		switch (layer)
+		{
+			case Layer.A: return ContributionLayer0;
+			case Layer.B: return ContributionLayer1;
+			case Layer.C: return ContributionLayer2;
+			default: return 0;
+		}
+	}
+
 	public override string ToString()
 	{
 		if (ContributionLayer0 > 999)
