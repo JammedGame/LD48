@@ -18,11 +18,11 @@ MonoBehaviour:
     - Minerals closer to the core are richer. \r\nMust be built on Mineral\U0001F48E
     [mineral] tile.\r\n"
   MineralPrice:
-    FlatPrice: 100
-    DependsOnSoil: 0
-    Soil1Price: 0
-    Soil2Price: 0
-    Soil3Price: 0
+    FlatPrice: 0
+    DependsOnSoil: 1
+    Soil1Price: 100
+    Soil2Price: 250
+    Soil3Price: 750
   EnergyContribution:
     EnergyCap: 0
     ContributionLayer0: -10
@@ -32,8 +32,8 @@ MonoBehaviour:
     MineralProduction:
       FlatProduction: 0
       DependsOnSoil: 1
-      Soil1Production: 15
-      Soil2Production: 35
+      Soil1Production: 25
+      Soil2Production: 50
       Soil3Production: 100
     AdjacentFacilitiesBoost: 0
     ConstructionTimeReductionGlobal: 0

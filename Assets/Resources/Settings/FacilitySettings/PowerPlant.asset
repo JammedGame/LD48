@@ -16,16 +16,16 @@ MonoBehaviour:
   Name: POWER PLANT
   Description: "Power generator facility. \r\nPrerequisite for Battery.\r\n"
   MineralPrice:
-    FlatPrice: 200
+    FlatPrice: 150
     DependsOnSoil: 0
     Soil1Price: 0
     Soil2Price: 0
     Soil3Price: 0
   EnergyContribution:
     EnergyCap: 0
-    ContributionLayer0: 50
-    ContributionLayer1: 50
-    ContributionLayer2: 50
+    ContributionLayer0: 25
+    ContributionLayer1: 25
+    ContributionLayer2: 25
   Production:
     MineralProduction:
       FlatProduction: 0

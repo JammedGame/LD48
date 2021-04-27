@@ -15,9 +15,9 @@ MonoBehaviour:
   Width: 25
   CloudsLimit: 2
   AtmosphereHeight: 4
-  Soil1Height: 12
-  Soil2Height: 8
-  Soil3Height: 5
+  Soil1Height: 9
+  Soil2Height: 12
+  Soil3Height: 8
   CoreAHeight: 1
   CoreBHeight: 1
   TerraformingFacilityInitialPosition: {x: 12, y: 3}

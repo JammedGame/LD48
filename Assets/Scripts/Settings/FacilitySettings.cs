@@ -8,6 +8,7 @@ public class FacilitySettings : ScriptableObject
 	[TextArea] public string Description;
 
 	[Header("Game Mechanics")]
+	public int BuildPointsCost = 1;
 	public MineralPrice MineralPrice;
 	public EnergyContribution EnergyContribution;
 	public Production Production;

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   InitialMinerals: 500
-  InitialEnergy: 500
-  InitialEnergyCap: 500
+  InitialEnergy: 200
+  InitialEnergyCap: 200
+  InitialBuildPoints: 5
   DepositReward:
-    A: 30
+    A: 50
     B: 100
     C: 250
   SettingsPerType:

@@ -9,6 +9,7 @@ public class GameSettings : ScriptableObject
 	public int InitialMinerals;
 	public int InitialEnergy;
 	public int InitialEnergyCap;
+	public int InitialBuildPoints;
 	public ValuePerLayer DepositReward;
 
 	[Header("Tile Settings")]

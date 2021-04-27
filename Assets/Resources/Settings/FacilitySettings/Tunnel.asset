@@ -20,9 +20,9 @@ MonoBehaviour:
   MineralPrice:
     FlatPrice: 0
     DependsOnSoil: 1
-    Soil1Price: 10
-    Soil2Price: 25
-    Soil3Price: 100
+    Soil1Price: 25
+    Soil2Price: 75
+    Soil3Price: 250
   EnergyContribution:
     EnergyCap: 0
     ContributionLayer0: -1

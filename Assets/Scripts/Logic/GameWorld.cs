@@ -12,6 +12,8 @@ public class GameWorld
 
 	// player's wallet
 	public int Minerals { get; private set; }
+	public int BuildPoints { get; private set; }
+	public int BuildPointsCap { get; private set; }
 	public int Energy { get; private set; }
 	public int EnergyCap { get; private set; }
 	public int ReachedDepth { get; private set; }
@@ -40,6 +42,8 @@ public class GameWorld
 		Minerals = settings.InitialMinerals;
 		Energy = settings.InitialEnergy;
 		EnergyCap = settings.InitialEnergyCap;
+		BuildPointsCap = settings.InitialBuildPoints;
+		BuildPoints = settings.InitialBuildPoints;
 		ReachedDepth = levelData.Parent.AtmosphereEndsAt;
 	}
 
@@ -78,6 +82,7 @@ public class GameWorld
 
 		var price = facilitySettings.MineralPrice.GetPrice(tile.Layer);
 		Minerals -= price;
+		BuildPoints -= facilitySettings.BuildPointsCost;
 		EnergyCap += facilitySettings.EnergyContribution.EnergyCap;
 
 		// change tileboard
@@ -85,7 +90,6 @@ public class GameWorld
 		ReachedDepth = Mathf.Max(action.Y, ReachedDepth);
 		builtFacilities.Add(action.Facility);
 
-		ProcessTurn();
 		OnTurnOver?.Invoke(action);
 		return true;
 	}
@@ -156,6 +160,8 @@ public class GameWorld
 
 		if (Minerals < facilitySettings.MineralPrice.GetPrice(tile.Layer))
 			return false;
+		if (BuildPoints < facilitySettings.BuildPointsCost)
+			return false;
 
 		if (tile.GetFirstNeighbourTunnel() is Direction tunnelConnectionDirection)
 		{
@@ -190,6 +196,8 @@ public class GameWorld
 
 		if (Energy > EnergyCap)
 			Energy = EnergyCap;
+
+		BuildPoints = BuildPointsCap;
 
 		// todo: gain minerals
 

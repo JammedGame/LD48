@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// Main UI controller.
@@ -18,19 +19,29 @@ public class GameUIController : MonoBehaviour
 
 	public string MineralsFormat;
 	public string EnergyFormat;
+	public Button NextTurnButton;
 	public TextMeshProUGUI Minerals;
 	public TextMeshProUGUI Energy;
 	public TextMeshProUGUI Turn;
+	public TextMeshProUGUI BuildPoints;
 
 	private float lastMinerals = 0;
 	private float lastEnergy = 0;
 	private float lastEnergyCap = 0;
+	private float lastEnergyPerTurn = 0;
+	private float lastMineralsPerTurn = 0;
 	private int lastTurn = 0;
 
 	public void Initialize(GameController game)
 	{
 		GameController = game;
 		Tooltip.ForceHideTooltip();
+		NextTurnButton.onClick.AddListener(OnClick);
+	}
+
+	private void OnClick()
+	{
+		GameWorld?.ProcessTurn();
 	}
 
 	public void DeselectAction(GameUIComponent placerButton)
@@ -56,33 +67,29 @@ public class GameUIController : MonoBehaviour
 		if (GameWorld == null)
 			return;
 
-		if (lastMinerals != GameWorld.Minerals)
-		{
-			string mineralsPerTurn = ChangeString(GameWorld.MineralsPerTurn());
-			lastMinerals = Mathf.Lerp(lastMinerals, GameWorld.Minerals, Time.deltaTime * 5f);
-			lastMinerals = Mathf.MoveTowards(lastMinerals, GameWorld.Minerals, Time.deltaTime * 10);
+		string mineralsPerTurn = ChangeString(GameWorld.MineralsPerTurn());
+		lastMinerals = Mathf.Lerp(lastMinerals, GameWorld.Minerals, Time.deltaTime * 5f);
+		lastMinerals = Mathf.MoveTowards(lastMinerals, GameWorld.Minerals, Time.deltaTime * 10);
 
-			Minerals.text = string.Format(MineralsFormat, Mathf.RoundToInt(lastMinerals)) + mineralsPerTurn;
-		}
+		Minerals.text = string.Format(MineralsFormat, Mathf.RoundToInt(lastMinerals)) + mineralsPerTurn;
 
-		if (lastEnergy != GameWorld.Energy || lastEnergyCap != GameWorld.EnergyCap)
-		{
-			string energyPerTurnText = ChangeString(GameWorld.EnergyPerTurn());
+		string energyPerTurnText = ChangeString(GameWorld.EnergyPerTurn());
 
-			lastEnergy = Mathf.Lerp(lastEnergy, GameWorld.Energy, Time.deltaTime * 5f);
-			lastEnergy = Mathf.MoveTowards(lastEnergy, GameWorld.Energy, Time.deltaTime * 10);
+		lastEnergy = Mathf.Lerp(lastEnergy, GameWorld.Energy, Time.deltaTime * 5f);
+		lastEnergy = Mathf.MoveTowards(lastEnergy, GameWorld.Energy, Time.deltaTime * 10);
 
-			lastEnergyCap = Mathf.Lerp(lastEnergyCap, GameWorld.EnergyCap, Time.deltaTime * 5f);
-			lastEnergyCap = Mathf.MoveTowards(lastEnergyCap, GameWorld.EnergyCap, Time.deltaTime * 10);
+		lastEnergyCap = Mathf.Lerp(lastEnergyCap, GameWorld.EnergyCap, Time.deltaTime * 5f);
+		lastEnergyCap = Mathf.MoveTowards(lastEnergyCap, GameWorld.EnergyCap, Time.deltaTime * 10);
 
-			Energy.text = string.Format(EnergyFormat, Mathf.RoundToInt(lastEnergy), Mathf.RoundToInt(lastEnergyCap)) + energyPerTurnText;
-		}
+		Energy.text = string.Format(EnergyFormat, Mathf.RoundToInt(lastEnergy), Mathf.RoundToInt(lastEnergyCap)) + energyPerTurnText;
 
 		if (lastTurn != GameWorld.CurrentTurn)
 		{
 			lastTurn = GameWorld.CurrentTurn;
 			Turn.text = $"TURN: {GameWorld.CurrentTurn}";
 		}
+
+		BuildPoints.text = $"BUILD BOTS: {GameWorld.BuildPoints} / {GameWorld.BuildPointsCap}";
 	}
 
 	private static string ChangeString(int value)
