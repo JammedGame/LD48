@@ -15,6 +15,7 @@ MonoBehaviour:
   FacilityType: 101
   Name: TERRAFORMING FACILITY
   Description: 
+  BuildPointsCost: 1
   MineralPrice:
     FlatPrice: 100
     DependsOnSoil: 1
@@ -22,12 +23,13 @@ MonoBehaviour:
     Soil2Price: 25
     Soil3Price: 100
   EnergyContribution:
+    EnergyCap: 0
     ContributionLayer0: 0
     ContributionLayer1: 0
     ContributionLayer2: 0
   Production:
     MineralProduction:
-      FlatProduction: 0
+      FlatProduction: 10
       DependsOnSoil: 0
       Soil1Production: 0
       Soil2Production: 0

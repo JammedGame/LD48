@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CameraController : BaseRaycaster,
-	IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
+	IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
 	// Serialized
 	public GameUIController UIController;
@@ -210,8 +210,9 @@ public class CameraController : BaseRaycaster,
 		isDragging = false;
 	}
 
-	public void OnPointerDown(PointerEventData eventData)
+	public void OnPointerClick(PointerEventData eventData)
 	{
+		if (isDragging) return;
 		UIController.SelectedAction?.OnPointerDown(eventData);
 	}
 
