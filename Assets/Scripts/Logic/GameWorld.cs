@@ -243,15 +243,8 @@ public class GameWorld
 
 	public void ProcessTurn()
 	{
-		foreach(var tile in tilesWithFacilities)
-		{
-			var settings = GameSettings.Instance.GetSettings(tile.FacilityType);
-			if (settings == null)
-				continue;
-
-			Energy += settings.EnergyContribution.Get(tile.Layer);
-			Minerals += settings.Production.MineralProduction.GetProduction(tile.Layer);
-		}
+		Energy += EnergyPerTurn();
+		Minerals += MineralsPerTurn();
 
 		if (Energy > EnergyCap)
 			Energy = EnergyCap;
