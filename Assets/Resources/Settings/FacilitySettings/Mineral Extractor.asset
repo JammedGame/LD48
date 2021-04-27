@@ -24,6 +24,7 @@ MonoBehaviour:
     Soil2Price: 0
     Soil3Price: 0
   EnergyContribution:
+    EnergyCap: 0
     ContributionLayer0: -25
     ContributionLayer1: -25
     ContributionLayer2: -25
@@ -31,8 +32,8 @@ MonoBehaviour:
     MineralProduction:
       FlatProduction: 0
       DependsOnSoil: 1
-      Soil1Production: 10
-      Soil2Production: 25
+      Soil1Production: 15
+      Soil2Production: 35
       Soil3Production: 100
     AdjacentFacilitiesBoost: 0
     ConstructionTimeReductionGlobal: 0

@@ -76,6 +76,7 @@ public class GameWorld
 
 		var price = facilitySettings.MineralPrice.GetPrice(tile.Layer);
 		Minerals -= price;
+		EnergyCap += facilitySettings.EnergyContribution.EnergyCap;
 
 		// change tileboard
 		tiles[action.X, action.Y].SetFacility(action.Facility);
@@ -154,15 +155,15 @@ public class GameWorld
 			if (tile.FacilityType != FacilityType.None)
 			{
 				var settings = GameSettings.Instance.GetSettings(tile.FacilityType);
-
-
+				Energy += settings.EnergyContribution.Get(tile.Layer);
+				Minerals += settings.Production.MineralProduction.GetProduction(tile.Layer);
 			}
 		}
 
-		// todo: spend energy
+		if (Energy > EnergyCap)
+			Energy = EnergyCap;
+
 		// todo: gain minerals
-		// todo: gain energy
-		// todo: cap energy
 
 		CurrentTurn++;
 	}

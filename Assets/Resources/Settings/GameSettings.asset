@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc066908ba32fec43a407b29c6e4eae6, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  InitialMinerals: 100
-  InitialEnergy: 100
-  InitialEnergyCap: 100
+  InitialMinerals: 150
+  InitialEnergy: 300
+  InitialEnergyCap: 300
   DepositReward:
     A: 30
     B: 100

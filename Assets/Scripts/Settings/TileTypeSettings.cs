@@ -47,6 +47,7 @@ public class MineralPrice
 [Serializable]
 public class EnergyContribution
 {
+	public int EnergyCap;
 	public int ContributionLayer0;
 	public int ContributionLayer1;
 	public int ContributionLayer2;

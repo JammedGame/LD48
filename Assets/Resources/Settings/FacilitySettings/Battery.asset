@@ -23,6 +23,7 @@ MonoBehaviour:
     Soil2Price: 0
     Soil3Price: 0
   EnergyContribution:
+    EnergyCap: 500
     ContributionLayer0: 0
     ContributionLayer1: 0
     ContributionLayer2: 0

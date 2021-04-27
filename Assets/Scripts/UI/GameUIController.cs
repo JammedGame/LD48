@@ -70,7 +70,7 @@ public class GameUIController : MonoBehaviour
 			lastEnergyCap = Mathf.Lerp(lastEnergyCap, GameWorld.EnergyCap, Time.deltaTime * 5f);
 			lastEnergyCap = Mathf.MoveTowards(lastEnergyCap, GameWorld.EnergyCap, Time.deltaTime * 10);
 
-			Energy.text = string.Format(EnergyFormat, Mathf.RoundToInt(lastMinerals), Mathf.RoundToInt(lastMinerals));
+			Energy.text = string.Format(EnergyFormat, Mathf.RoundToInt(lastEnergy), Mathf.RoundToInt(lastEnergyCap));
 		}
 	}
 }
