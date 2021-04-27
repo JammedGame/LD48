@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: BATTERY
   Description: "Power storage facility. Increases Energy Cap by 100 [energy]\u26A1.
     \n\rIncreases production of all adjecent power plants by 25%."
-  BuildPointsCost: 1
+  BuildPointsCost: 2
   MineralPrice:
     FlatPrice: 150
     DependsOnSoil: 0

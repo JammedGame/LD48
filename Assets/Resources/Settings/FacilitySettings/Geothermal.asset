@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: GEOTHERMAL PLANT
   Description: "Power generator facility. Deeper Lava \U0001F30Btiles yield more
     energy.\r\nRequires Battery. Must be built on Lava tile.\r"
-  BuildPointsCost: 1
+  BuildPointsCost: 2
   MineralPrice:
     FlatPrice: 200
     DependsOnSoil: 0
@@ -25,9 +25,9 @@ MonoBehaviour:
     Soil3Price: 0
   EnergyContribution:
     EnergyCap: 0
-    ContributionLayer0: 80
-    ContributionLayer1: 160
-    ContributionLayer2: 200
+    ContributionLayer0: 75
+    ContributionLayer1: 100
+    ContributionLayer2: 150
   Production:
     MineralProduction:
       FlatProduction: 0
