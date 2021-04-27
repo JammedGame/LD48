@@ -69,7 +69,7 @@ public class GameWorld
 
 	public bool ProcessAction(PlayerAction action)
 	{
-		if (!ValidateAction(action))
+		if (!ValidateAction(action, out _))
 			return false;
 
 		var tile = GetTile(action.X, action.Y);
@@ -120,55 +120,114 @@ public class GameWorld
 		return perTurn;
 	}
 
-	public bool ValidateAction(PlayerAction action)
+	public bool ValidateAction(PlayerAction action, out string error)
 	{
+		error = default;
+
 		if (action.Facility == FacilityType.None)
+		{
+			error = "Tried to place undefined facility!";
 			return false;
+		}
 
 		var facilitySettings = GameSettings.Instance.GetSettings(action.Facility);
 		if (facilitySettings == null)
+		{
+			error = "Tried to place undefined facility!";
 			return false;
+		}
 
 		var tile = GetTile(action.X, action.Y);
 		if (tile == null)
+		{
+			error = "Tried to place at undefined tile!";
 			return false;
+		}
 
 		if (tile.TileType == TileType.Surface)
+		{
+			error = "Can't place facilities on tap - lets dig!";
 			return false;
+		}
+
 		if (tile.TileType == TileType.Core)
+		{
+			error = "We can't place facilities in the Core!";
 			return false;
+		}
 		if (tile.TileType == TileType.Granite)
+		{
+			error = "We can't place facilities on Granite!";
 			return false;
+		}
+
 		if (tile.TileType == TileType.Mineral && action.Facility != FacilityType.MineralExtractor)
+		{
+			error = "Only Mineral Extractors can be placed here!";
 			return false;
+		}
+
 		if (tile.TileType != TileType.Mineral && action.Facility == FacilityType.MineralExtractor)
+		{
+			error = "Mineral Extractors must be placed on Mineral tiles!";
 			return false;
+		}
+
 		if (tile.TileType == TileType.Magma && action.Facility != FacilityType.GeothermalPowerPlant)
+		{
+			error = "Only Geothermal Power Plants can be placed here!";
 			return false;
+		}
+
 		if (tile.TileType != TileType.Magma && action.Facility == FacilityType.GeothermalPowerPlant)
+		{
+			error = "Geothermal Power Plants must be placed on Lava tiles!";
 			return false;
+		}
+
 		if (action.Facility == FacilityType.BFCoreExtractor)
 		{
 			var bottomIsCore = tile.GetAdjecentTile(Direction.Bottom) is Tile t && t.TileType == TileType.Core;
 			if (!bottomIsCore)
+			{
+				error = "BFCore Extractor must be placed next to the Planet core! Dig deeper";
 				return false;
+			}
 		}
+
 		if (tile.HasFacility)
+		{
+			error = "Tile is not empty!";
 			return false;
+		}
+
 		if (!IsFacilityTypeUnlocked(action.Facility))
+		{
+			error = $"Build {facilitySettings.Requirements.RequirementToUnlock.GetSettings().Name} to unlock {facilitySettings.Name}!";
 			return false;
+		}
 
 		if (Minerals < facilitySettings.MineralPrice.GetPrice(tile.Layer))
-			return false;
-		if (BuildPoints < facilitySettings.BuildPointsCost)
-			return false;
-
-		if (tile.GetFirstNeighbourTunnel() is Direction tunnelConnectionDirection)
 		{
-			return true;
+			error = $"WE NEED MORE MINERALS";
+			return false;
 		}
 
-		return false;
+		if (BuildPoints < facilitySettings.BuildPointsCost)
+		{
+			error = $"WE NEED MORE BUILD BOTS!";
+			return false;
+		}
+
+		var tunnelConnectionDirection = tile.GetFirstNeighbourTunnel();
+		if (tunnelConnectionDirection == null)
+		{
+			error = $"CONSTRUCT TUNNELS TO THIS LOCATION FIRST!";
+			return false;
+		}
+
+		error = default;
+		return true;
 	}
 
 	public bool IsFacilityTypeUnlocked(FacilityType facilityType)

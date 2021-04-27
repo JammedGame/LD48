@@ -54,7 +54,15 @@ public class PlacerButton : GameUIComponent,
 			X = tileCoord.x,
 			Y = tileCoord.y
 		};
-		UIController.GameWorld.ProcessAction(action);
+
+		if (UIController.GameWorld.ValidateAction(action, out string error))
+		{
+			UIController.GameWorld.ProcessAction(action);
+		}
+		else if (!string.IsNullOrWhiteSpace(error))
+		{
+			UIController.Callout.Show(error);
+		}
 	}
 
 	public void OnPointerClick(PointerEventData eventData)

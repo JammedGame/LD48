@@ -19,6 +19,7 @@ public class GameUIController : MonoBehaviour
 
 	public string MineralsFormat;
 	public string EnergyFormat;
+	public CalloutUI Callout;
 	public Button NextTurnButton;
 	public TextMeshProUGUI Minerals;
 	public TextMeshProUGUI Energy;
@@ -37,6 +38,7 @@ public class GameUIController : MonoBehaviour
 		GameController = game;
 		Tooltip.ForceHideTooltip();
 		NextTurnButton.onClick.AddListener(OnClick);
+		Callout.Init();
 	}
 
 	private void OnClick()
