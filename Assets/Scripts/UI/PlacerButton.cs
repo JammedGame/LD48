@@ -5,12 +5,15 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class PlacerButton : GameUIComponent,
 	IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler,
 	IPointerEnterHandler, IPointerExitHandler
 {
+	public Image BG;
+	public Color BGColor;
+	public Color BGColorFlash;
 	public TextMeshProUGUI Text;
 	public FacilityType Facility { get; private set; }
 	public FacilitySettings Settings { get; private set; }
@@ -61,7 +64,7 @@ public class PlacerButton : GameUIComponent,
 		}
 		else if (!string.IsNullOrWhiteSpace(error))
 		{
-			UIController.Callout.Show(error);
+			UIController.Callout.Show(error.ToUpper());
 		}
 	}
 
@@ -99,6 +102,18 @@ public class PlacerButton : GameUIComponent,
 			text += $"\n\nBuild {Settings.Requirements.RequirementToUnlock.GetName()} to unlock this facility";
 
 		return text;
+	}
+
+	public override void OnSelect()
+	{
+		base.OnSelect();
+		BG.color = BGColorFlash;
+	}
+
+	public override void OnDeselect()
+	{
+		StopAllCoroutines();
+		BG.color = BGColor;
 	}
 }
 

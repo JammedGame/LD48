@@ -146,7 +146,13 @@ public class GameWorld
 
 		if (tile.TileType == TileType.Surface)
 		{
-			error = "Can't place facilities on tap - lets dig!";
+			error = "Can't place facilities on the surface - lets dig!";
+			return false;
+		}
+
+		if (!IsFacilityTypeUnlocked(action.Facility))
+		{
+			error = $"Build {facilitySettings.Requirements.RequirementToUnlock.GetSettings().Name} to unlock {facilitySettings.Name}!";
 			return false;
 		}
 
@@ -163,7 +169,7 @@ public class GameWorld
 
 		if (tile.TileType == TileType.Mineral && action.Facility != FacilityType.MineralExtractor)
 		{
-			error = "Only Mineral Extractors can be placed here!";
+			error = "Only Mineral Extractors can be placed on Mineral Tiles!";
 			return false;
 		}
 
@@ -175,7 +181,7 @@ public class GameWorld
 
 		if (tile.TileType == TileType.Magma && action.Facility != FacilityType.GeothermalPowerPlant)
 		{
-			error = "Only Geothermal Power Plants can be placed here!";
+			error = "Only Geothermal Power Plants can be placed on Lava Tiles!";
 			return false;
 		}
 
@@ -198,12 +204,6 @@ public class GameWorld
 		if (tile.HasFacility)
 		{
 			error = "Tile is not empty!";
-			return false;
-		}
-
-		if (!IsFacilityTypeUnlocked(action.Facility))
-		{
-			error = $"Build {facilitySettings.Requirements.RequirementToUnlock.GetSettings().Name} to unlock {facilitySettings.Name}!";
 			return false;
 		}
 
