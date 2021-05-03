@@ -16,7 +16,8 @@ MonoBehaviour:
   Name: NUCLEAR PLANT
   Description: "Power generator facility. Super efficient, but must be built far
     away from all other facilities.\r\nRequires Booster.\r"
-  BuildPointsCost: 2
+  BuildPointsCost: 1
+  BuildPointsCapIncrease: 0
   MineralPrice:
     FlatPrice: 300
     DependsOnSoil: 0

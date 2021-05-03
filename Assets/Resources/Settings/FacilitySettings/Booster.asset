@@ -16,7 +16,8 @@ MonoBehaviour:
   Name: BOOSTER
   Description: "Support facility. Adds +75% [mineral]\U0001F48E income to adj. Extractors.
     \r\nRequires Battery. Prerequisite for Nuclear Plant, BuildBot Factory."
-  BuildPointsCost: 2
+  BuildPointsCost: 1
+  BuildPointsCapIncrease: 0
   MineralPrice:
     FlatPrice: 200
     DependsOnSoil: 0

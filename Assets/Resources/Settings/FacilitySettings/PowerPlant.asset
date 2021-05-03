@@ -15,7 +15,8 @@ MonoBehaviour:
   FacilityType: 104
   Name: POWER PLANT
   Description: "Power generator facility. \r\nPrerequisite for Battery.\r\n"
-  BuildPointsCost: 2
+  BuildPointsCost: 1
+  BuildPointsCapIncrease: 0
   MineralPrice:
     FlatPrice: 150
     DependsOnSoil: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   InitialMinerals: 500
   InitialEnergy: 200
   InitialEnergyCap: 200
-  InitialBuildPoints: 5
+  InitialBuildPoints: 3
   DepositReward:
     A: 50
     B: 100

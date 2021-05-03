@@ -18,6 +18,7 @@ MonoBehaviour:
     next to a Tunnel. \nIts cost depends on the type of soil - it gets more expensive
     closer to the core.\r\n"
   BuildPointsCost: 1
+  BuildPointsCapIncrease: 0
   MineralPrice:
     FlatPrice: 0
     DependsOnSoil: 1
