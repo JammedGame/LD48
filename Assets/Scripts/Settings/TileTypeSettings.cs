@@ -65,7 +65,7 @@ public class EnergyContribution
 
 	public override string ToString()
 	{
-		if (ContributionLayer0 > 999)
+		if (ContributionLayer0 > 9999)
 		{
 			return "Produces enough energy to Terraform the planet!";
 		}

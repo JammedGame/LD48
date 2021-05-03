@@ -17,7 +17,8 @@ MonoBehaviour:
   Description: "Mineral extraction facility. Its output depends on the type of mineral
     - Minerals closer to the core are richer. \r\nMust be built on Mineral\U0001F48E
     [mineral] tile.\r\n"
-  BuildPointsCost: 2
+  BuildPointsCost: 1
+  BuildPointsCapIncrease: 0
   MineralPrice:
     FlatPrice: 100
     DependsOnSoil: 0

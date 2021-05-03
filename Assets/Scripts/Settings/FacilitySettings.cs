@@ -9,6 +9,7 @@ public class FacilitySettings : ScriptableObject
 
 	[Header("Game Mechanics")]
 	public int BuildPointsCost = 1;
+	public int BuildPointsCapIncrease = 0;
 	public MineralPrice MineralPrice;
 	public EnergyContribution EnergyContribution;
 	public Production Production;

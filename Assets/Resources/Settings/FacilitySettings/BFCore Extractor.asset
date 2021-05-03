@@ -16,7 +16,8 @@ MonoBehaviour:
   Name: BF CORE EXTRACTOR
   Description: "Core energy extraction facility. Extracts enough energy required
     to terraform the planet. Build it to win.\r\nRequires adjacent Core tile.\r"
-  BuildPointsCost: 0
+  BuildPointsCost: 1
+  BuildPointsCapIncrease: 0
   MineralPrice:
     FlatPrice: 2500
     DependsOnSoil: 0

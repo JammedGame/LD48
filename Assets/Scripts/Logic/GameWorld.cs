@@ -84,6 +84,8 @@ public class GameWorld
 		Minerals -= price;
 		BuildPoints -= facilitySettings.BuildPointsCost;
 		EnergyCap += facilitySettings.EnergyContribution.EnergyCap;
+		BuildPointsCap += facilitySettings.BuildPointsCapIncrease;
+		BuildPoints += facilitySettings.BuildPointsCapIncrease;
 
 		// change tileboard
 		tiles[action.X, action.Y].SetFacility(action.Facility);

@@ -18,7 +18,8 @@ MonoBehaviour:
     enabling more production per turn.
 
     Requires Booster.'
-  BuildPointsCost: 2
+  BuildPointsCost: 1
+  BuildPointsCapIncrease: 3
   MineralPrice:
     FlatPrice: 1000
     DependsOnSoil: 0
