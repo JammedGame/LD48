@@ -97,7 +97,7 @@ public class GameUIController : MonoBehaviour
 
 	private void ShowActionPreview()
 	{
-		if (selectedAction == null) return;
+		if (Preview == null || selectedAction == null) return;
 
 		var tileCoord = BoardUtil.GetHoveredTile();
 		var tile = GameWorld.GetTile(tileCoord.x, tileCoord.y);
