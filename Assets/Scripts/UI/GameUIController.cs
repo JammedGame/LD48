@@ -29,8 +29,6 @@ public class GameUIController : MonoBehaviour
 	private float lastMinerals = 0;
 	private float lastEnergy = 0;
 	private float lastEnergyCap = 0;
-	private float lastEnergyPerTurn = 0;
-	private float lastMineralsPerTurn = 0;
 	private int lastTurn = 0;
 
 	public void Initialize(GameController game)
