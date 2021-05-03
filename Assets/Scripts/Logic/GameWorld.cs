@@ -155,7 +155,7 @@ public class GameWorld
 
 		if (!IsFacilityTypeUnlocked(action.Facility))
 		{
-			error = $"Build {facilitySettings.Requirements.RequirementToUnlock.GetSettings().Name} to unlock {facilitySettings.Name}!";
+			error = $"Build {facilitySettings.Requirements.RequirementToUnlock.GetName()} to unlock {facilitySettings.Name}!";
 			return false;
 		}
 
@@ -236,9 +236,9 @@ public class GameWorld
 				if (tileWithFacility.FacilityType != FacilityType.Tunnel && tileWithFacility.FacilityType != FacilityType.None)
 				{
 					var dist = Mathf.Max(Mathf.Abs(action.X - tileWithFacility.X), Mathf.Abs(action.Y - tileWithFacility.Y));
-					if (dist <= 2)
+					if (dist <= 1)
 					{
-						error = "NUCLEAR POWER PLANT MUST BE PLACED 2 TILES AWAY FROM OTHER FACILITIES!";
+						error = "NUCLEAR POWER PLANT MUST BE PLACED AWAY FROM OTHER FACILITIES!";
 						return false;
 					}
 				}
@@ -250,9 +250,9 @@ public class GameWorld
 				foreach(var nuclearTile in tilesWithFacilities.Where(x => x.FacilityType == FacilityType.NuclearPowerPlant))
 				{
 					var dist = Mathf.Max(Mathf.Abs(action.X - nuclearTile.X), Mathf.Abs(action.Y - nuclearTile.Y));
-					if (dist <= 2)
+					if (dist <= 1)
 					{
-						error = $"CAN NOT PLACE {action.Facility} CLOSE TO A NUCLEAR POWER PLANT!";
+						error = $"CAN NOT PLACE {facilitySettings.Name} CLOSE TO A NUCLEAR POWER PLANT!";
 						return false;
 					}
 				}
