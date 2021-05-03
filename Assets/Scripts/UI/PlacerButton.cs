@@ -17,6 +17,12 @@ public class PlacerButton : GameUIComponent,
 	public TextMeshProUGUI Text;
 	public FacilityType Facility { get; private set; }
 	public FacilitySettings Settings { get; private set; }
+	public override ActionPreview.MyData PreviewData(Tile tile) =>
+		new ActionPreview.MyData(
+			tile.GetPosition3D(),
+			TileView.GetTextureForFacility(tile, Facility),
+			UIController.GameWorld.ValidateAction(new PlayerAction{Facility = Facility, X = tile.X, Y = tile.Y}, out var _)
+		);
 	int tooltipShowToken;
 
 	public void Init(FacilityType facility)
@@ -73,7 +79,7 @@ public class PlacerButton : GameUIComponent,
 		UIController.SelectAction(this);
 	}
 
-	public override void OnPointerDown(PointerEventData eventData)
+	public override void ExecuteAction(PointerEventData eventData)
     {
 		PlaceFacility();
 	}
@@ -122,6 +128,7 @@ public class GameUIComponent : UIBehaviour
 	public RectTransform rectTransform => transform as RectTransform;
 	public GameUIController UIController => GetComponentInParent<GameUIController>();
 	public bool IsSelected => UIController.SelectedAction == this;
+	public virtual ActionPreview.MyData PreviewData(Tile tile) => null;
 
     public virtual void OnSelect()
     {
@@ -131,7 +138,7 @@ public class GameUIComponent : UIBehaviour
     {
     }
 
-	public virtual void OnPointerDown(PointerEventData eventData)
+	public virtual void ExecuteAction(PointerEventData eventData)
 	{
 	}
 }

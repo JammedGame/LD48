@@ -11,6 +11,7 @@ using UnityEngine.UI;
 /// </summary>
 public class GameUIController : MonoBehaviour
 {
+	public ActionPreview Preview;
 	public TooltipUI Tooltip;
 	public GameController GameController { get; private set; }
 	public GameWorld GameWorld => GameController.ActiveGame;
@@ -67,6 +68,8 @@ public class GameUIController : MonoBehaviour
 		if (GameWorld == null)
 			return;
 
+		ShowActionPreview();
+
 		string mineralsPerTurn = ChangeString(GameWorld.MineralsPerTurn());
 		lastMinerals = Mathf.Lerp(lastMinerals, GameWorld.Minerals, Time.deltaTime * 5f);
 		lastMinerals = Mathf.MoveTowards(lastMinerals, GameWorld.Minerals, Time.deltaTime * 10);
@@ -90,6 +93,18 @@ public class GameUIController : MonoBehaviour
 		}
 
 		BuildPoints.text = $"BUILD BOTS: {GameWorld.BuildPoints} / {GameWorld.BuildPointsCap}";
+	}
+
+	private void ShowActionPreview()
+	{
+		if (selectedAction == null) return;
+
+		var tileCoord = BoardUtil.GetHoveredTile();
+		var tile = GameWorld.GetTile(tileCoord.x, tileCoord.y);
+		if (tile == null) return;
+
+		var previewData = selectedAction.PreviewData(tile);
+		Preview.Show(previewData);
 	}
 
 	private static string ChangeString(int value)

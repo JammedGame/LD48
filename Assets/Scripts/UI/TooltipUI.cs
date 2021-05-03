@@ -18,6 +18,7 @@ public class TooltipUI : GameUIComponent
 		gameObject.SetActive(true);
 		currentToken++;
 		showToken = currentToken;
+		// todo: clamp tooltip position to stay fully on screen
 	}
 
 	public void ForceHideTooltip()

@@ -213,7 +213,7 @@ public class CameraController : BaseRaycaster,
 	public void OnPointerClick(PointerEventData eventData)
 	{
 		if (isDragging) return;
-		UIController.SelectedAction?.OnPointerDown(eventData);
+		UIController.SelectedAction?.ExecuteAction(eventData);
 	}
 
 	// ---------------------------

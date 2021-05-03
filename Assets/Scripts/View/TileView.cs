@@ -102,27 +102,32 @@ public class TileView : MonoBehaviour
 		if (!tile.HasFacility)
 			return null;
 
-		if (tile.FacilityType == FacilityType.Tunnel)
+		return GetTextureForFacility(tile, tile.FacilityType);
+	}
+
+	public static Texture GetTextureForFacility(Tile tile, FacilityType facility)
+	{
+		if (facility == FacilityType.Tunnel)
 		{
 			return LoadTunnelTexture(tile);
 		}
 
-		if (tile.FacilityType == FacilityType.TerraformingFacility && tile.TileType == TileType.Soil)
+		if (facility == FacilityType.TerraformingFacility && tile.TileType == TileType.Soil)
 		{
-			return Resources.Load<Texture>($"Tiles/{tile.FacilityType}_0");
+			return Resources.Load<Texture>($"Tiles/{facility}_0");
 		}
-		if (tile.FacilityType == FacilityType.TerraformingFacility && tile.TileType == TileType.Surface)
+		if (facility == FacilityType.TerraformingFacility && tile.TileType == TileType.Surface)
 		{
-			return Resources.Load<Texture>($"Tiles/{tile.FacilityType}_1");
+			return Resources.Load<Texture>($"Tiles/{facility}_1");
 		}
 
-		if (tile.FacilityType == FacilityType.BFCoreExtractor)
+		if (facility == FacilityType.BFCoreExtractor)
 		{
-			return Resources.Load<Texture>($"Tiles/{tile.FacilityType}");
+			return Resources.Load<Texture>($"Tiles/{facility}");
 		}
 
 		//todo: other facilities.
-		var result = Resources.Load<Texture>($"Tiles/{tile.FacilityType}_{tile.Layer}_0");
+		var result = Resources.Load<Texture>($"Tiles/{facility}_{tile.Layer}_0");
 		return result;
 	}
 
