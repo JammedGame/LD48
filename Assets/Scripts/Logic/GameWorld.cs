@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
@@ -228,6 +229,35 @@ public class GameWorld
 			return false;
 		}
 
+		if (action.Facility == FacilityType.NuclearPowerPlant)
+		{
+			// prevent placing nuclear power plant to exisitn facilities.
+			foreach(var tileWithFacility in tilesWithFacilities)
+				if (tileWithFacility.FacilityType != FacilityType.Tunnel && tileWithFacility.FacilityType != FacilityType.None)
+				{
+					var dist = Mathf.Max(Mathf.Abs(action.X - tileWithFacility.X), Mathf.Abs(action.Y - tileWithFacility.Y));
+					if (dist <= 2)
+					{
+						error = "NUCLEAR POWER PLANT MUST BE PLACED 2 TILES AWAY FROM OTHER FACILITIES!";
+						return false;
+					}
+				}
+		}
+		else
+		{
+			// prevent placing normal facilities close to an existing nuclear power plant.
+			if (action.Facility != FacilityType.Tunnel && action.Facility != FacilityType.None)
+				foreach(var nuclearTile in tilesWithFacilities.Where(x => x.FacilityType == FacilityType.NuclearPowerPlant))
+				{
+					var dist = Mathf.Max(Mathf.Abs(action.X - nuclearTile.X), Mathf.Abs(action.Y - nuclearTile.Y));
+					if (dist <= 2)
+					{
+						error = $"CAN NOT PLACE {action.Facility} CLOSE TO A NUCLEAR POWER PLANT!";
+						return false;
+					}
+				}
+		}
+
 		error = default;
 		return true;
 	}
@@ -256,6 +286,15 @@ public class GameWorld
 		// todo: gain minerals
 
 		CurrentTurn++;
+	}
+
+	public void Cheat()
+	{
+		Minerals += 99999;
+		BuildPoints += 99;
+		BuildPointsCap += 99;
+		Energy += 9999;
+		EnergyCap += 9999;
 	}
 }
 
