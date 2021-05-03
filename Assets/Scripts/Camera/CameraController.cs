@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CameraController : BaseRaycaster,
-	IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+	IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler,
+	IPointerEnterHandler, IPointerExitHandler
 {
 	// Serialized
 	public GameUIController UIController;
@@ -214,6 +215,16 @@ public class CameraController : BaseRaycaster,
 	{
 		if (isDragging) return;
 		UIController.SelectedAction?.ExecuteAction(eventData);
+	}
+
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		GameController.UIController.OnMouseEnterMap();
+	}
+
+	public void OnPointerExit(PointerEventData eventData)
+	{
+		GameController.UIController.OnMouseLeaveMap();
 	}
 
 	// ---------------------------

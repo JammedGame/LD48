@@ -23,5 +23,11 @@ public class ActionPreview : MonoBehaviour
         transform.position = data.Position;
         meshRenderer.material.mainTexture = data.Texture;
         meshRenderer.material.color = data.IsValid ? Color.green : Color.red;
+        gameObject.SetActive(true);
     }
+
+	internal void Hide()
+	{
+        gameObject.SetActive(false);
+	}
 }

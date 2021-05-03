@@ -1151,8 +1151,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 254.7, y: -5}
-  m_SizeDelta: {x: 266.86496, y: 40}
+  m_AnchoredPosition: {x: 270, y: -10}
+  m_SizeDelta: {x: 270, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &2734595599413181028
 GameObject:
@@ -2384,6 +2384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f36fc522b81c34da7192835ee1d0d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Preview: {fileID: 0}
   Tooltip: {fileID: 1091527357}
   MineralsFormat: 'MINERALS: {0}'
   EnergyFormat: 'ENERGY: {0} / {1}'
@@ -2547,8 +2548,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 534.2, y: -5}
-  m_SizeDelta: {x: 164.96548, y: 40}
+  m_AnchoredPosition: {x: 550, y: -10}
+  m_SizeDelta: {x: 170, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &7653809911676102537
 GameObject:
@@ -2962,6 +2963,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 5, y: -5}
-  m_SizeDelta: {x: 240.75677, y: 40}
+  m_AnchoredPosition: {x: 10, y: -10}
+  m_SizeDelta: {x: 250, y: 40}
   m_Pivot: {x: 0, y: 1}

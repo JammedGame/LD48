@@ -14,6 +14,7 @@ public class GameUIController : MonoBehaviour
 	public ActionPreview Preview;
 	public TooltipUI Tooltip;
 	public GameController GameController { get; private set; }
+	public bool MouseIsOverMap { get; private set; }
 	public GameWorld GameWorld => GameController.ActiveGame;
 	public GameUIComponent SelectedAction => selectedAction;
 	GameUIComponent selectedAction;
@@ -97,14 +98,35 @@ public class GameUIController : MonoBehaviour
 
 	private void ShowActionPreview()
 	{
-		if (Preview == null || selectedAction == null) return;
+		if (Preview == null)
+			return;
+
+		if (selectedAction == null || !MouseIsOverMap)
+		{
+			Preview.Hide();
+			return;
+		}
 
 		var tileCoord = BoardUtil.GetHoveredTile();
 		var tile = GameWorld.GetTile(tileCoord.x, tileCoord.y);
-		if (tile == null) return;
+		if (tile == null)
+		{
+			Preview.Hide();
+			return;
+		}
 
 		var previewData = selectedAction.PreviewData(tile);
 		Preview.Show(previewData);
+	}
+
+	public void OnMouseEnterMap()
+	{
+		MouseIsOverMap = true;
+	}
+
+	public void OnMouseLeaveMap()
+	{
+		MouseIsOverMap = false;
 	}
 
 	private static string ChangeString(int value)
